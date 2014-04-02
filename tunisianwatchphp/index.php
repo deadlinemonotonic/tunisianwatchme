@@ -11,7 +11,8 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        // put your code here
+        echo("<h1><marquee>DevGear</marquee><h1>");
         ?>
+        <a
     </body>
 </html>
