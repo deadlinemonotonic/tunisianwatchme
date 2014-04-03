@@ -1,7 +1,7 @@
 <?php
 class GeolocalisationEntity{
      private $id;
-     private $reclamation;
+     
      private $lon;
      private $lat;
 
@@ -12,9 +12,7 @@ class GeolocalisationEntity{
          return $this->id;
      }
 
-     public function getReclamation() {
-         return $this->reclamation;
-     }
+     
 
      public function getLon() {
          return $this->lon;
@@ -28,9 +26,7 @@ class GeolocalisationEntity{
          $this->id = $id;
      }
 
-     public function setReclamation($reclamation) {
-         $this->reclamation = $reclamation;
-     }
+     
 
      public function setLon($lon) {
          $this->lon = $lon;
