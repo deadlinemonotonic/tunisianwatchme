@@ -64,7 +64,7 @@ class utilisateurDao {
 }
 
 $rec = new utilisateurDao();
-$list = $rec->getALL();
+$list = $rec->selectUsers();
 foreach ($list as $item) {
 echo $item->getId() . " - " . $item->getNom() . " - " . $item->getPrenom() . " - " . $item->getMail() . "<br>";
 }
