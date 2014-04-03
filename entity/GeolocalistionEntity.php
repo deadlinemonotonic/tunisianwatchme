@@ -1,7 +1,6 @@
 <?php
 class GeolocalisationEntity{
      private $id;
-     
      private $lon;
      private $lat;
 
@@ -11,8 +10,6 @@ class GeolocalisationEntity{
      public function getId() {
          return $this->id;
      }
-
-     
 
      public function getLon() {
          return $this->lon;
@@ -25,8 +22,6 @@ class GeolocalisationEntity{
      public function setId($id) {
          $this->id = $id;
      }
-
-     
 
      public function setLon($lon) {
          $this->lon = $lon;

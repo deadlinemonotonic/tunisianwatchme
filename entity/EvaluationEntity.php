@@ -3,31 +3,31 @@
 class EvaluationEntity {
 
     private $note;
-    private $idreclamation;
-    private $idcitoyen;
+    private $reclamation;
+    private $citoyen;
 
     public function getNote() {
         return $this->note;
     }
 
-    public function getIdreclamation() {
-        return $this->idreclamation;
+    public function getreclamation() {
+        return $this->reclamation;
     }
 
-    public function getIdcitoyen() {
-        return $this->idcitoyen;
+    public function getcitoyen() {
+        return $this->citoyen;
     }
 
     public function setNote($note) {
         $this->note = $note;
     }
 
-    public function setIdreclamation($idreclamation) {
-        $this->idreclamation = $idreclamation;
+    public function setreclamation($reclamation) {
+        $this->reclamation = $reclamation;
     }
 
     public function setIdcitoyen($idcitoyen) {
-        $this->idcitoyen = $idcitoyen;
+        $this->citoyen = $citoyen;
     }
 
     function __construct() {
