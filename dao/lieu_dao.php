@@ -23,12 +23,72 @@ class lieu_dao{
         }
         return $list;
     }
+    
+    function getLieuById($id) {
+        $sql = "select * from lieu where id = $id";
+        $result = mysql_query($sql) or die(mysql_error());
+
+
+        if ($row = mysql_fetch_array($result)) {
+
+            $domm = new DomaineEntity();
+            $domm->setId($row['id']);
+            $domm->setNom($row['ville']);
+        }
+        return $domm;
+    }
+
+    function getDomaineByVille($ville) {
+        $sql = "select * from domaine where id = '$ville'";
+        $result = mysql_query($sql) or die(mysql_error());
+
+
+        while ($row = mysql_fetch_array($result)) {
+
+            $domm = new DomaineEntity();
+            $domm->setId($row['id']);
+            $domm->setNom($row['nom']);
+        }
+        return $domm;
+    }
+
+    function insertLieu($lie) {
+        $ville = $lie->getVille();
+        $result = mysql_query("insert into domaine (ville) values ('$ville')") or die(mysql_error());
+        if (mysql_query($result))
+            echo "insertion réussie";
+        else
+            echo "erreur lors de l'insertion";
+    }
+    
+    function updateLieu($id, $lie) {
+        $ville = $lie->getVille();
+        $requete = "UPDATE `domaine` SET `ville` = '$ville' WHERE `id` ='$id';";
+
+        if (mysql_query($requete)) {
+            echo "Update réussie";
+        }
+        else
+            echo "erreur lors de la mise à jour";
+    }
+
+    function deleteLieu($id) {
+
+        $requete = " delete from lieu where id= '$id' ; ";
+
+        if (mysql_query($requete)) {
+            echo "Utilisateur supprimée";
+        }
+        else
+            echo "erreur lors de la suppression";
+    }
 
 }
 
-$lieuDAO = new lieu_dao();
+/*$lieuDAO = new lieu_dao();
 $lieuEntity = new LieuEntity();//optionnel
 $listLieux = $lieuDAO->getAll();
 foreach ($listLieux as $lieuEntity) {
     echo "lieu " . $lieuEntity->getId() . " " . $lieuEntity->getVille() . "<br>";
-}
+}*/
+?>

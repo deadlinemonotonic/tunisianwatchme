@@ -37,7 +37,7 @@ class ReclamationEntity {
         return $this->titre;
     }
 
-    public function getIdcitoyen() {
+    public function getCitoyen() {
         return $this->citoyen;
     }
 
@@ -49,7 +49,7 @@ class ReclamationEntity {
         return $this->etat;
     }
 
-    public function getgeolocalisation() {
+    public function getGeolocalisation() {
         return $this->geolocalisation;
     }
 
@@ -77,7 +77,7 @@ class ReclamationEntity {
         $this->titre = $titre;
     }
 
-    public function setIdcitoyen($citoyen) {
+    public function setCitoyen($citoyen) {
         $this->citoyen = $citoyen;
     }
 
@@ -89,7 +89,7 @@ class ReclamationEntity {
         $this->etat = $etat;
     }
 
-    public function setgeolocalisation($geolocalisation) {
+    public function setGeolocalisation($geolocalisation) {
         $this->geolocalisation = $geolocalisation;
     }
 
