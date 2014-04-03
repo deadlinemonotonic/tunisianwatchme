@@ -30,6 +30,11 @@ class GeolocalisationEntity{
      public function setLat($lat) {
          $this->lat = $lat;
      }
+     public function __toString() {
+         return 'id:'.$this->id.' lat:'.$this->lat.' lon:'.$this->lon;
+     }
+     
+    
 
 
 }

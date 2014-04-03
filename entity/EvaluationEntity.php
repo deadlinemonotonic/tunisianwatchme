@@ -26,12 +26,16 @@ class EvaluationEntity {
         $this->reclamation = $reclamation;
     }
 
-    public function setIdcitoyen($idcitoyen) {
+    public function setIdcitoyen($citoyen) {
         $this->citoyen = $citoyen;
     }
 
     function __construct() {
         
+    }
+    
+    function __toString() {
+        return 'id citoyen:'.$this->citoyen.' id reclamation:'.$this->reclamation.' note:'.$this->note;
     }
 
 }
