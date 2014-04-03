@@ -25,14 +25,14 @@ class GeolocalisationDAO {
         echo "********** Supprission avec succés **********<br>";
     }
 
-    function update($id,$geo) {
+    function upDate($id,$geo) {
         //$geo = new GeolocalisationEntity();
         $req = "UPDATE geolocalisation SET lon =" . $geo->getLon() . ", lat =" . $geo->getLat() . " WHERE id =" . $id;
         mysql_query($req) or die("********** Erreur de mise à jour **********<br>");
         echo "********** Mise à jour avec succés **********<br>";
     }
 
-    function AfficheAllGeo() {
+    function getAll() {
 
         $result = mysql_query("SELECT * FROM geolocalisation");
         $list = array();
@@ -53,14 +53,14 @@ $dao = new GeolocalisationDAO();
 $entity = new GeolocalisationEntity();
 $geo = new GeolocalisationEntity();
 
-$geo->setLat("12121121212");
-$geo->setLon("45454545454");
-$dao->update(2, $geo);
-
-$list = $dao->AfficheAllGeo();
+//$geo->setLat("12121121212");
+//$geo->setLon("45454545454");
+//$dao->update(2, $geo);
+//
+$list = $dao->getAll();
 
 
 foreach ($list as $entity) {
-    echo "lat:" . $entity->getLat() . " lon:" . $entity->getLon() . "<br>";
+    echo $entity . "<br>";
 }
 
