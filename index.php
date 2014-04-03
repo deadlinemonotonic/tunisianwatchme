@@ -13,6 +13,6 @@ and open the template in the editor.
         <?php
         echo("<h1><marquee>DevGear</marquee><h1>");
         ?>
-        <a
+        
     </body>
 </html>
