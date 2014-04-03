@@ -2,7 +2,7 @@
 
 class UtilisateurEntity {
 
-    private $idetablissement;
+    private $etablissement;
     private $id;
     private $nom;
     private $prenom;
@@ -63,8 +63,8 @@ class UtilisateurEntity {
         return $this->datenaissance;
     }
 
-    public function setIdetablissement($idetablissement) {
-        $this->idetablissement = $idetablissement;
+    public function setetablissement($etablissement) {
+        $this->etablissement = $etablissement;
     }
 
     public function setId($id) {

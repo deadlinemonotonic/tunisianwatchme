@@ -8,10 +8,10 @@ class ReclamationEntity {
     private $description;
     private $titre;
     private $citoyen;
-    private $iddomaine;
+    private $domaine;
     private $etat;
-    private $idgeolocalisation;
-    private $idlieu;
+    private $geolocalisation;
+    private $lieu;
 
     function __construct() {
         
@@ -41,20 +41,20 @@ class ReclamationEntity {
         return $this->citoyen;
     }
 
-    public function getIddomaine() {
-        return $this->iddomaine;
+    public function getdomaine() {
+        return $this->domaine;
     }
 
     public function getEtat() {
         return $this->etat;
     }
 
-    public function getIdgeolocalisation() {
-        return $this->idgeolocalisation;
+    public function getgeolocalisation() {
+        return $this->geolocalisation;
     }
 
-    public function getIdlieu() {
-        return $this->idlieu;
+    public function getlieu() {
+        return $this->lieu;
     }
 
     public function setId($id) {
@@ -81,20 +81,20 @@ class ReclamationEntity {
         $this->citoyen = $citoyen;
     }
 
-    public function setIddomaine($iddomaine) {
-        $this->iddomaine = $iddomaine;
+    public function setdomaine($domaine) {
+        $this->domaine = $domaine;
     }
 
     public function setEtat($etat) {
         $this->etat = $etat;
     }
 
-    public function setIdgeolocalisation($idgeolocalisation) {
-        $this->idgeolocalisation = $idgeolocalisation;
+    public function setgeolocalisation($geolocalisation) {
+        $this->geolocalisation = $geolocalisation;
     }
 
-    public function setIdlieu($idlieu) {
-        $this->idlieu = $idlieu;
+    public function setlieu($lieu) {
+        $this->lieu = $lieu;
     }
 
 }
