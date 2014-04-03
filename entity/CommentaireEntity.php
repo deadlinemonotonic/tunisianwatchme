@@ -7,12 +7,8 @@ class CommentaireEntity{
     private $idReclamation;
 
     
-    function __construct($id, $texte, $user, $date, $idReclamation) {
-        $this->id = $id;
-        $this->texte = $texte;
-        $this->user = $user;
-        $this->date = $date;
-        $this->idReclamation = $idReclamation;
+    function __construct() {
+        
     }
     public function getId() {
         return $this->id;

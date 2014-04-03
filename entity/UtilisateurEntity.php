@@ -111,19 +111,8 @@ class UtilisateurEntity {
         $this->datenaissance = $datenaissance;
     }
 
-    function __construct($idetablissement, $id, $nom, $prenom, $photo, $sexe, $adress, $login, $mdp, $mail, $type, $datenaissance) {
-        $this->idetablissement = $idetablissement;
-        $this->id = $id;
-        $this->nom = $nom;
-        $this->prenom = $prenom;
-        $this->photo = $photo;
-        $this->sexe = $sexe;
-        $this->adress = $adress;
-        $this->login = $login;
-        $this->mdp = $mdp;
-        $this->mail = $mail;
-        $this->type = $type;
-        $this->datenaissance = $datenaissance;
+    function __construct() {
+        
     }
 
 }

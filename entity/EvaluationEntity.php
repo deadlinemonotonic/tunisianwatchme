@@ -30,10 +30,8 @@ class EvaluationEntity {
         $this->idcitoyen = $idcitoyen;
     }
 
-    function __construct($note, $idreclamation, $idcitoyen) {
-        $this->note = $note;
-        $this->idreclamation = $idreclamation;
-        $this->idcitoyen = $idcitoyen;
+    function __construct() {
+        
     }
 
 }

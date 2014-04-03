@@ -3,9 +3,8 @@ class DomaineEntity{
     private $id;
     private $nom;
     
-    function __construct($id, $nom) {
-        $this->id = $id;
-        $this->nom = $nom;
+    function __construct() {
+        
     }
     
     public function getId() {

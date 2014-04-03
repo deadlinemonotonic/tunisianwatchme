@@ -7,23 +7,14 @@ class ReclamationEntity {
     private $heure;
     private $description;
     private $titre;
-    private $idcitoyen;
+    private $citoyen;
     private $iddomaine;
     private $etat;
     private $idgeolocalisation;
     private $idlieu;
 
-    function __construct($id, $date, $heure, $description, $titre, $idcitoyen, $iddomaine, $etat, $idgeolocalisation, $idlieu) {
-        $this->id = $id;
-        $this->date = $date;
-        $this->heure = $heure;
-        $this->description = $description;
-        $this->titre = $titre;
-        $this->idcitoyen = $idcitoyen;
-        $this->iddomaine = $iddomaine;
-        $this->etat = $etat;
-        $this->idgeolocalisation = $idgeolocalisation;
-        $this->idlieu = $idlieu;
+    function __construct() {
+        
     }
 
     public function getId() {
@@ -47,7 +38,7 @@ class ReclamationEntity {
     }
 
     public function getIdcitoyen() {
-        return $this->idcitoyen;
+        return $this->citoyen;
     }
 
     public function getIddomaine() {
@@ -86,8 +77,8 @@ class ReclamationEntity {
         $this->titre = $titre;
     }
 
-    public function setIdcitoyen($idcitoyen) {
-        $this->idcitoyen = $idcitoyen;
+    public function setIdcitoyen($citoyen) {
+        $this->citoyen = $citoyen;
     }
 
     public function setIddomaine($iddomaine) {

@@ -5,11 +5,8 @@ class GeolocalisationEntity{
      private $lon;
      private $lat;
 
-     function __construct($id, $reclamation, $lon, $lat) {
-         $this->id = $id;
-         $this->reclamation = $reclamation;
-         $this->lon = $lon;
-         $this->lat = $lat;
+     function __construct() {
+         
      }
      public function getId() {
          return $this->id;

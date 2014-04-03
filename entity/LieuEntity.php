@@ -5,9 +5,8 @@ class LieuEntity {
     private $id;
     private $ville;
 
-    function __construct($id, $ville) {
-        $this->id = $id;
-        $this->ville = $ville;
+    function __construct() {
+        
     }
 
     public function getId() {
