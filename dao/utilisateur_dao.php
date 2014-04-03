@@ -1,7 +1,7 @@
 <?php
 
 include_once("../connection/connection.php");
-include_once("../entity/ReclamationEntity.php");
+include_once("../entity/UtilisateurEntity.php");
 
 class utilisateurDao {
 
@@ -14,21 +14,21 @@ class utilisateurDao {
         $query_exec = mysql_query($query_search) or die(mysql_error());
         $list = array();
         while ($result_array = mysql_fetch_array($query_exec)) {
-            $reclamation = new ReclamationEntity();
-            $reclamation->setId($result_array["id"]);
-            $reclamation->setTitre($result_array["titre"]);
-            $reclamation->setDescription($result_array["description"]);
-            $reclamation->setEtat($result_array["etat"]);
-            $list[] = $reclamation;
+            $user = new UtilisateurEntity();
+            $user->setId($result_array["id"]);
+            $user->setNom($result_array["nom"]);
+            $user->setPrenom($result_array["prenom"]);
+            $user->setMail($result_array["mail"]);
+            $list[] = $user;
         }
         return $list;
     }
 
 }
 
-$rec = new reclamationDao();
+$rec = new utilisateurDao();
 $list = $rec->getALL();
 foreach ($list as $item) {
-    echo $item->getId()."<br>";
+    echo $item->getId()." - ".$item->getNom()." - ".$item->getPrenom()." - ".$item->getMail()."<br>";
 }
 ?>
