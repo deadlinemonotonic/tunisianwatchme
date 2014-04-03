@@ -9,16 +9,20 @@ class utilisateurDao {
         
     }
 
-    function insertUser() {
-                $nom=$_POST['nom'];
-		$prenom=$_POST['prenom'];
-		$email=$_POST['email'];
-		$password=$_POST['password'];
-		$pays=$_POST['pays'];
-
+    function insertUser($user) {
+                $nom = $user->getNom();
+		$prenom= $user->getPrenom();
+                $sexe= $user->getSexe();
+                $adress= $user->getAdress();
+                $login= $user->getLogin();
+                $mdp= $user->getMdp();
+                $mail= $user->getMail();
+                $type= $user->getType();
+                $datenaissance= $user->getDatenaissance();
 
 		//préparataion (dans une variable) de la requête SQL
-                $requete="insert into admin (id,nom,prenom,email,password,pays) values (NULL,'$nom', '$prenom', '$email','$password', '$pays');";
+                $requete="insert into utilisateur (nom,prenom,sexe,adress,login,mdp,mail,type,datenaissance) "
+                        . "values ('$nom', '$prenom', '$sexe','$adress', '$login', '$mdp', '$mail', '$type', '$datenaissance');";
 
 
 		// la fonction mysql_query permet d'exécuter la requête préparée
