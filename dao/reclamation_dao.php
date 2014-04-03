@@ -50,13 +50,13 @@ class reclamationDao {
         $desc = $rec->getDescription();
         $etat = $rec->getEtat();
         $heure = $rec->getHeure();
-        $cit = $rec->getCitoyen()->getId();
+        $cit = $rec->getCitoyen();
         $titre = $rec->getTitre();
-        $dom = $rec->getdomaine()->getId();
-        $geo = $rec->getGeolocalisation()->getId();
-        $lieu = $rec->getlieu()->getId();
+        $dom = $rec->getdomaine();
+        $geo = $rec->getGeolocalisation();
+        $lieu = $rec->getlieu();
 
-        $req = "INSERT INTO reclamation VALUES ('', $date, $heure,$titre,$cit,$dom,$etat,$geo,$lieu)";
+        $req = "INSERT INTO reclamation VALUES ('', $date, $heure,$titre,$cit->getId(),$dom->getId(),$etat,$geo->getId(),$lieu->getId())";
         $result = mysql_query($req) or die(mysql_error());
         if (mysql_query($result))
             echo "insertion réussie";
@@ -91,7 +91,7 @@ class reclamationDao {
 
  $rec = new reclamationDao();
   echo "<br>";
-  //$rec->insertReclamation($rec->getReclamationById(1));
+  $rec->insertReclamation($rec->getReclamationById(1));
   $list = $rec->getALL();
   $dom = $rec->getReclamationById(1)->getDescription();
   echo "$dom<br>";

@@ -22,7 +22,7 @@ class utilisateurDao {
 
         //préparataion (dans une variable) de la requête SQL
         $requete = "insert into utilisateur (nom,prenom,sexe,adress,login,mdp,mail,type,datenaissance) "
-                . "values ($nom', '$prenom', '$sexe','$adress', '$login', '$mdp', '$mail', '$type', '$datenaissance');";
+                . "values ('$nom', '$prenom', '$sexe','$adress', '$login', '$mdp', '$mail', '$type', null);";
 
 
         // la fonction mysql_query permet d'exécuter la requête préparée
