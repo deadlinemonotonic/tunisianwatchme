@@ -15,8 +15,8 @@ class UtilisateurEntity {
     private $type;
     private $datenaissance;
 
-    public function getIdetablissement() {
-        return $this->idetablissement;
+    public function getetablissement() {
+        return $this->etablissement;
     }
 
     public function getId() {
