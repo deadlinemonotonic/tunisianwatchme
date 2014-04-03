@@ -3,13 +3,13 @@
 include_once '../connection/connection.php';
 include_once '../entity/LieuEntity.php';
 
-class lieu_dao{
-    
+class lieu_dao {
+
     function __construct() {
         
     }
-    
-    function getAll(){
+
+    function getAll() {
         $sql = "select * from lieu";
         $result = mysql_query($sql) or die(mysql_error());
         $list = array();
@@ -23,7 +23,7 @@ class lieu_dao{
         }
         return $list;
     }
-    
+
     function getLieuById($id) {
         $sql = "select * from lieu where id = $id";
         $result = mysql_query($sql) or die(mysql_error());
@@ -60,7 +60,7 @@ class lieu_dao{
         else
             echo "erreur lors de l'insertion";
     }
-    
+
     function updateLieu($id, $lie) {
         $ville = $lie->getVille();
         $requete = "UPDATE `domaine` SET `ville` = '$ville' WHERE `id` ='$id';";
@@ -85,10 +85,14 @@ class lieu_dao{
 
 }
 
-/*$lieuDAO = new lieu_dao();
-$lieuEntity = new LieuEntity();//optionnel
-$listLieux = $lieuDAO->getAll();
-foreach ($listLieux as $lieuEntity) {
-    echo "lieu " . $lieuEntity->getId() . " " . $lieuEntity->getVille() . "<br>";
-}*/
+/* $lieuDAO = new lieu_dao();
+  $lieuEntity = new LieuEntity();//optionnel
+
+  $lieuDAO = new lieu_dao();
+  //$lieuEntity = new LieuEntity();//optionnel
+
+  $listLieux = $lieuDAO->getAll();
+  foreach ($listLieux as $lieuEntity) {
+  echo "lieu " . $lieuEntity->getId() . " " . $lieuEntity->getVille() . "<br>";
+  } */
 ?>
