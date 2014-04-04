@@ -98,9 +98,6 @@ class utilisateurDao {
 
 $rec = new utilisateurDao();
 $list = $rec->getAll();
-$n = $rec->getUserById(1)->getNom();
-$rec->insertUser($rec->getUserById(1));
-echo "$n<br>";
 foreach ($list as $item) {
     echo $item->getId() . " - " . $item->getNom() . " - " . $item->getPrenom() . " - " . $item->getMail() . "<br>";
 }
