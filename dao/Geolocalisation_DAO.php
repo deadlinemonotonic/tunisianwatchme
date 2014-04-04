@@ -41,7 +41,7 @@ class GeolocalisationDAO {
     function AfficheAllGeo() {
 
         $result = mysql_query("SELECT * FROM geolocalisation");
-        $list[] = array();
+        $list = array();
 
         while ($row = mysql_fetch_array($result)) {
             $geo = new GeolocalisationEntity();
@@ -55,30 +55,10 @@ class GeolocalisationDAO {
 
 }
 
+
+
 $dao = new GeolocalisationDAO();
-$entity = new GeolocalisationEntity();
 $list = $dao->AfficheAllGeo();
-
-foreach ($list as $entity) {
-    echo "lat:" . $entity->getLat() . " lon:" . $entity->getLon() . "<br>";
-
-    $req = "INSERT INTO geolocalisation ( lon , lat ) VALUES ( " . $geo->getLon() . "," . $geo->getLat() . ")";
-    mysql_query($req) or die("********** Erreur d'ajoute **********<br>");
-    echo "********** Ajout avec succés **********<br>";
-}
-
-
-$dao = new GeolocalisationDAO();
-$entity = new GeolocalisationEntity();
-$geo = new GeolocalisationEntity();
-
-//$geo->setLat("12121121212");
-//$geo->setLon("45454545454");
-//$dao->update(2, $geo);
-//
-$list = $dao->getAll();
-
-
 foreach ($list as $entity) {
     echo $entity . "<br>";
 }

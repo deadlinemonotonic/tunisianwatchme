@@ -57,21 +57,7 @@ class EvaluationDao {
 }
 
 $dao = new EvaluationDao();
-
-$dao->Insert(2, 2, 10);
 $array = $dao->getAll();
 foreach ($array as $value) {
     echo $value . '<br>';
 }
-//$entity = new EvaluationEntity();
-//$dao->Insert(9, 1, 10);
-
-//foreach ($array as $value) {
-//    echo $value . '<br>';
-//}
-
-//$dao->Delete($array[0]);
-//$array = $dao->getAll();
-//foreach ($array as $value) {
-//    echo $value . '<br>';
-//}

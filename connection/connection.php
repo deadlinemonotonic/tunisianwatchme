@@ -9,15 +9,15 @@ class connection {
 
     public function __construct() {
         $this->bd = "tunisianwatch";
-        $this->hostname = "root";
+        $this->hostname = "localhost";
         $this->password = "root";
-        $this->username = "localhost";
+        $this->username = "root";
         
     }
     
     public function connection(){
-        $dbhandle = mysql_connect($this->hostname, $this->username, $this->password) or die("Unable to connect to MySQL");
-        $selectDB = mysql_select_db($this->bd, $dbhandle) or die("Could not select the database");
+        mysql_connect($this->hostname, $this->username, $this->password) or die("Unable to connect to MySQL");
+        $selectDB = mysql_select_db($this->bd) or die("Could not select the database");
         return $selectDB;
     }
 
