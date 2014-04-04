@@ -12,7 +12,8 @@ include_once '../entity/EvaluationEntity.php';
 class EvaluationDao {
 
     function __construct() {
-        
+        $c = new connection();
+        $c->connection();
     }
 
     function Insert($note, $idreclamation, $idcitoyen) {
