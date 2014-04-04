@@ -49,6 +49,10 @@ class CommentaireEntity{
     public function setIdReclamation($idReclamation) {
         $this->idReclamation = $idReclamation;
     }
+    
+    public function __toString() {
+        return '<br>Commentaire={'.$this->id.','.$this->texte.'}';
+    }
 
 }
 
