@@ -96,7 +96,7 @@ class ReclamationEntity {
     public function setlieu($lieu) {
         $this->lieu = $lieu;
     }
-
+    
 }
 
 ?>
