@@ -2,8 +2,8 @@
 
 
 
-include_once 'connection/connection.php';
-include_once 'entity/GeolocalistionEntity.php';
+include_once '../connection/connection.php';
+include_once '../entity/GeolocalistionEntity.php';
 
 class GeolocalisationDAO {
 
@@ -62,13 +62,5 @@ class GeolocalisationDAO {
         return $geo;
     }
 
-}
-
-
-
-$dao = new GeolocalisationDAO();
-$list = $dao->AfficheAllGeo();
-foreach ($list as $entity) {
-    echo $entity . "<br>";
 }
 

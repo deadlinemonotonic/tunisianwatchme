@@ -1,11 +1,11 @@
 <?php
 
-include_once("connection/connection.php");
-include_once("entity/ReclamationEntity.php");
-include_once("dao/utilisateur_dao.php");
-include_once("dao/domaine_dao.php");
-include_once("dao/Geolocalisation_DAO.php");
-include_once("dao/lieu_dao.php");
+include_once("../connection/connection.php");
+include_once("../entity/ReclamationEntity.php");
+include_once("../dao/utilisateur_dao.php");
+include_once("../dao/domaine_dao.php");
+include_once("../dao/Geolocalisation_DAO.php");
+include_once("../dao/lieu_dao.php");
 
 class reclamationDao {
 
@@ -129,43 +129,4 @@ class reclamationDao {
 
 }
 
-/* $rec = new reclamationDao();
-  echo "<br>";
-  $rec1 = new ReclamationEntity();
-
-  //$rec1->setDate(new DateTime("Y-m-d H:i:s", "2014/01/01"));
-  $rec1->setDescription("farouk");
-  $rec1->setEtat(0);
-  //$rec1->setHeure(new DateTime("H:i:s", 22, 22, 22));
-  $rec1->setTitre("farouk");
-
-  $gLoc = new GeolocalisationEntity();
-  $gLoc->setId(1);
-  $gLoc->setLat("");
-  $gLoc->setLon("");
-  $rec1->setGeolocalisation($gLoc);
-
-  $lL=new LieuEntity();
-  $lL->setId(4);
-  $lL->setVille("tiger");
-  $rec1->setlieu($lL);
-
-  $dD=new DomaineEntity();
-  $dD->setId(23);
-  $dD->setNom("tiger");
-  $rec1->setdomaine($dD);
-
-  $citoyen=new UtilisateurEntity();
-  $citoyen->setId(2);
-  $rec1->setCitoyen($citoyen);
-
-  $rec->insertReclamation($rec1);
-  $rec1->setEtat(1);
-  //$rec->updateReclamation(34, $rec1);
-  $list = $rec->getALL();
-  $dom = $rec->getReclamationById(1)->getDescription();
-  echo "$dom<br>";
-  foreach ($list as $item) {
-  echo $item->getId() . "<br>";
-  } */
 ?>

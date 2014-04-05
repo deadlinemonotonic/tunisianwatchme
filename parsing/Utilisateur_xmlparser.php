@@ -73,7 +73,7 @@ class UtilisateurXMLParser {
     }
 
 }
+$c = new UtilisateurXMLParser(1);
 
-$test = new UtilisateurXMLParser(41);
 
 ?>

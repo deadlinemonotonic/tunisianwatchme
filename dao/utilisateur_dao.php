@@ -1,7 +1,7 @@
 <?php
 
-include_once("connection/connection.php");
-include_once("entity/UtilisateurEntity.php");
+include_once("../connection/connection.php");
+include_once("../entity/UtilisateurEntity.php");
 
 class utilisateurDao {
 
@@ -73,7 +73,7 @@ class utilisateurDao {
         while ($result_array = mysql_fetch_array($query_exec)) {
             $user = new UtilisateurEntity();
             $user->setId($result_array["id"]);
-            $user->setEtablissement($result_array["etablissement"]);
+            $user->setEtablissement($result_array["idetablissement"]);
             $user->setNom($result_array["nom"]);
             $user->setPrenom($result_array["prenom"]);
             $user->setSexe($result_array["sexe"]);
@@ -97,7 +97,7 @@ class utilisateurDao {
         if ($result_array = mysql_fetch_array($query_exec)) {
 
             $user->setId($result_array["id"]);
-            $user->setEtablissement($result_array["etablissement"]);
+            $user->setEtablissement($result_array["idetablissement"]);
             $user->setNom($result_array["nom"]);
             $user->setPrenom($result_array["prenom"]);
             $user->setSexe($result_array["sexe"]);
@@ -112,4 +112,5 @@ class utilisateurDao {
     }
 
 }
+
 ?>
