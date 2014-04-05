@@ -35,9 +35,9 @@ class commentaire_dao {
     }
 
   
-    public function getByidReclamation(CommentaireEntity $com) {
+    public function getByidReclamation($idreclamation) {
         //$com = new CommentaireEntity();
-        $result = mysql_query("SELECT * FROM commentaire WHERE idreclamation = ".$com->getIdReclamation());
+        $result = mysql_query("SELECT * FROM commentaire WHERE idreclamation = ".$idreclamation);
         $list = array();
 
         while ($row = mysql_fetch_array($result)) {
@@ -53,32 +53,5 @@ class commentaire_dao {
         }
         return $list;
     }
-
-    public function getAll() {
-        $result = mysql_query("SELECT * FROM commentaire");
-        $list = array();
-
-        while ($row = mysql_fetch_array($result)) {
-            $element = new CommentaireEntity();
-
-            $element->setId($row[0]);
-            $element->setIdReclamation($row[1]);
-            $element->setTexte($row[2]);
-            $element->setUser($row[3]);
-            $element->setDate($row[4]);
-
-            $list[] = $element;
-        }
-        return $list;
-    }
-
-}
-
-$dao = new commentaire_dao();
-$com = new CommentaireEntity();
-$com->setIdReclamation(1);
-$var = $dao->getByidReclamation($com);
-foreach ($var as $value) {
-    echo $value;
 }
 ?>

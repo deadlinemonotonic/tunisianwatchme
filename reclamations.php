@@ -25,7 +25,6 @@ if (isset($_GET["type"])) {
                 $idgeo = $daoGeo->Insert($geolocalisation);
                 $reclamation->setGeolocalisation($idgeo);
             }
-           // $daoUser = new utilisateurDao();
             $citoyen = new UtilisateurEntity();
             $citoyen->setId($_GET["idcitoyen"]);
             
