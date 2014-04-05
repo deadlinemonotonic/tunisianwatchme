@@ -22,7 +22,7 @@ class utilisateurDao {
         $datenaissance = $user->getDatenaissance();
 
         //préparataion (dans une variable) de la requête SQL
-        $requete = "insert into utilisateur (etablissement,nom,prenom,sexe,adress,login,mdp,mail,type,datenaissance) "
+        $requete = "insert into utilisateur (idetablissement,nom,prenom,sexe,adress,login,mdp,mail,type,datenaissance) "
                 . "values ('$etablissement','$nom', '$prenom', '$sexe','$adress', '$login', '$mdp', '$mail', '$type', null);";
 
 
@@ -45,7 +45,7 @@ class utilisateurDao {
         $mail = $user->getMail();
         $type = $user->getType();
         $datenaissance = $user->getDatenaissance();
-        $requete = "UPDATE `utilisateur` SET `etablissement` = '$etablissement', `nom` = '$nom', `prenom` = '$prenom', `sexe` = '$sexe',`adress` = '$adress',`login` = '$login',`mdp` = '$mdp',`mail` = '$mail',`type` = '$type',`datenaissance` = '$datenaissance' WHERE `id` ='$id';";
+        $requete = "UPDATE `utilisateur` SET `idetablissement` = '$etablissement', `nom` = '$nom', `prenom` = '$prenom', `sexe` = '$sexe',`adress` = '$adress',`login` = '$login',`mdp` = '$mdp',`mail` = '$mail',`type` = '$type',`datenaissance` = '$datenaissance' WHERE `id` ='$id';";
 
         if (mysql_query($requete)) {
             echo "Update réussie";
@@ -73,7 +73,7 @@ class utilisateurDao {
         while ($result_array = mysql_fetch_array($query_exec)) {
             $user = new UtilisateurEntity();
             $user->setId($result_array["id"]);
-            $user->setEtablissement($result_array["etablissement"]);
+            $user->setEtablissement($result_array["idetablissement"]);
             $user->setNom($result_array["nom"]);
             $user->setPrenom($result_array["prenom"]);
             $user->setSexe($result_array["sexe"]);
@@ -97,7 +97,7 @@ class utilisateurDao {
         if ($result_array = mysql_fetch_array($query_exec)) {
 
             $user->setId($result_array["id"]);
-            $user->setEtablissement($result_array["etablissement"]);
+            $user->setEtablissement($result_array["idetablissement"]);
             $user->setNom($result_array["nom"]);
             $user->setPrenom($result_array["prenom"]);
             $user->setSexe($result_array["sexe"]);
