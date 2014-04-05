@@ -67,13 +67,12 @@ class UtilisateurXMLParser {
             $oXMLWriter->endElement();
             }
         $oXMLWriter->endElement();
-
         $oXMLWriter->endDocument();
         echo $oXMLWriter->outputMemory(TRUE);
     }
 
 }
-$c = new UtilisateurXMLParser(1);
+$c = new UtilisateurXMLParser(2);
 
 
 ?>

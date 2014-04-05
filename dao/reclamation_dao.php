@@ -41,7 +41,7 @@ class reclamationDao {
     }
 
     function getReclamationById($id) {
-        $sql = "select * from reclamation where id = $id";
+        $sql = "select * from reclamation where id = ".$id;
         $result = mysql_query($sql) or die(mysql_error());
         $u = new utilisateurDao();
         $d = new domaine_dao();

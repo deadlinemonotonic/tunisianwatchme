@@ -56,7 +56,7 @@ class utilisateurDao {
 
     function deleteUser($id) {
 
-        $requete = " delete from utilisateur where id= '$id' ; ";
+        $requete = " delete from utilisateur where id = ".$id;
 
         if (mysql_query($requete)) {
             echo "Utilisateur supprimée";
@@ -90,7 +90,7 @@ class utilisateurDao {
     }
 
     function getUserById($id) {
-        $query_search = "SELECT * FROM utilisateur WHERE `id` ='$id';";
+        $query_search = "SELECT * FROM utilisateur WHERE `id` = ".$id;
         $query_exec = mysql_query($query_search) or die(mysql_error());
 
         $user = new UtilisateurEntity();
@@ -112,5 +112,4 @@ class utilisateurDao {
     }
 
 }
-
 ?>

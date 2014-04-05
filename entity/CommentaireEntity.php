@@ -1,5 +1,8 @@
 <?php
-include_once 'UtilisateurEntity.php';
+include_once '../entity/UtilisateurEntity.php';
+include_once '../entity/ReclamationEntity.php';
+$user = new UtilisateurEntity(); 
+$Reclamation = new ReclamationEntity();
 
 class CommentaireEntity{
     private $id;
@@ -48,13 +51,14 @@ class CommentaireEntity{
         $this->date = $date;
     }
 
-    public function setReclamation($Reclamation) {
+    public function setReclamation(ReclamationEntity $Reclamation) {
         $this->Reclamation = $Reclamation;
     }
     
     public function __toString() {
         return 'Commentaire={'.$this->id.','.$this->texte.'}';
     }
+    
 
 }
 

@@ -15,7 +15,7 @@ class commentaire_dao {
     public function Insert(CommentaireEntity $com) {
         //$com = new CommentaireEntity();
         $req = "INSERT INTO commentaire ( idreclamation , texte , idutilisateur , date )"
-                . " VALUES (" . $com->getIdReclamation() . "," . $com->getTexte() . "," . $com->getUser() . "," . $com->getDate() . ")";
+                . " VALUES (" . $com->getReclamation()->getid() . "," . $com->getTexte() . "," . $com->getUser()->getid() . "," . $com->getDate() . ")";
         mysql_query($req) or
                 die("<br>*********** Erreur d'ajoute ***********<br>");
         echo "<br>********** Ajout avec succés **********<br>";
@@ -94,8 +94,32 @@ class commentaire_dao {
         }
         return $list;
     }
+    
+    public function getByid($id) {
+        $user = new utilisateurDao();
+        $rec = new reclamationDao();
+        $result = mysql_query("SELECT * FROM `commentaire` WHERE `id` =".$id);
+        $list = array();
+
+        while($row = mysql_fetch_array($result)) {
+            $element = new CommentaireEntity();
+            $element->setId($row[0]);
+            $element->setReclamation($rec->getReclamationById($row[1]));
+            $element->setTexte($row[2]);
+            $element->setUser($user->getUserById($row[3]));
+            $element->setDate($row[4]);
+
+            $list[] = $element;
+        }
+        return $list;
+    }
 
 }
+    $b=new commentaire_dao();
+    $array = $b->getByid(6);
+    foreach ($array as $value) {
+        echo $value->getDate();
+    }
 
         
 ?>
