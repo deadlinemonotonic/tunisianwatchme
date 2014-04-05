@@ -60,21 +60,6 @@ class GeolocalisationDAO {
         }
         return $geo;
     }
-
-    function getGeoById($id) {
-        $result = mysql_query("SELECT * FROM geolocalisation where id = $id");
-
-        $geo = new GeolocalisationEntity();
-        if ($row = mysql_fetch_array($result)) {
-
-            $geo->setId($row['id']);
-            $geo->setLat($row['lat']);
-            $geo->setLon($row['lon']);
-            $list[] = $geo;
-        }
-        return $geo;
-    }
-
 }
 
 ?>

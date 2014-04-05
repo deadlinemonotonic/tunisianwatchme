@@ -18,7 +18,6 @@ class ReclamationXMLParser {
 
     function setXML($listReclamations) {
         header('Content-type: text/xml; charset=UTF-8');
-        $recalamtion = new ReclamationEntity();
         $oXMLWriter = new XMLWriter;
         $oXMLWriter->openMemory();
         $oXMLWriter->startDocument('1.0', 'UTF-8');
