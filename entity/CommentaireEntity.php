@@ -1,4 +1,6 @@
 <?php
+include_once 'UtilisateurEntity.php';
+
 class CommentaireEntity{
     private $id;
     private $texte;
@@ -38,7 +40,7 @@ class CommentaireEntity{
         $this->texte = $texte;
     }
 
-    public function setUser($user) {
+    public function setUser(UtilisateurEntity $user) {
         $this->user = $user;
     }
 
@@ -48,6 +50,10 @@ class CommentaireEntity{
 
     public function setIdReclamation($idReclamation) {
         $this->idReclamation = $idReclamation;
+    }
+    
+    public function __toString() {
+        return '<br>Commentaire={'.$this->id.','.$this->texte.'}';
     }
 
 }

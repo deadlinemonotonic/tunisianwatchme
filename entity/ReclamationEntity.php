@@ -77,11 +77,11 @@ class ReclamationEntity {
         $this->titre = $titre;
     }
 
-    public function setCitoyen($citoyen) {
+    public function setCitoyen(UtilisateurEntity $citoyen) {
         $this->citoyen = $citoyen;
     }
 
-    public function setdomaine($domaine) {
+    public function setdomaine(DomaineEntity $domaine) {
         $this->domaine = $domaine;
     }
 
@@ -89,14 +89,14 @@ class ReclamationEntity {
         $this->etat = $etat;
     }
 
-    public function setGeolocalisation($geolocalisation) {
+    public function setGeolocalisation(GeolocalisationEntity $geolocalisation) {
         $this->geolocalisation = $geolocalisation;
     }
 
-    public function setlieu($lieu) {
+    public function setlieu(LieuEntity $lieu) {
         $this->lieu = $lieu;
     }
-
+    
 }
 
 ?>

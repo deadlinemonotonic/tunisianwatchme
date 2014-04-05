@@ -9,7 +9,7 @@ class utilisateurDao {
         
     }
 
-    function insertUser($user) {
+    function insertUser(UtilisateurEntity $user) {
         $nom = $user->getNom();
         $prenom = $user->getPrenom();
         $sexe = $user->getSexe();
@@ -22,7 +22,7 @@ class utilisateurDao {
 
         //préparataion (dans une variable) de la requête SQL
         $requete = "insert into utilisateur (nom,prenom,sexe,adress,login,mdp,mail,type,datenaissance) "
-                . "values ($nom', '$prenom', '$sexe','$adress', '$login', '$mdp', '$mail', '$type', '$datenaissance');";
+                . "values ('$nom', '$prenom', '$sexe','$adress', '$login', '$mdp', '$mail', '$type', null);";
 
 
         // la fonction mysql_query permet d'exécuter la requête préparée
@@ -33,7 +33,7 @@ class utilisateurDao {
             echo "erreur lors de l'insertion";
     }
 
-    function updateUser($id, $user) {
+    function updateUser($id,UtilisateurEntity $user) {
         $nom = $user->getNom();
         $prenom = $user->getPrenom();
         $sexe = $user->getSexe();
@@ -94,14 +94,5 @@ class utilisateurDao {
         return $user;
     }
 
-}
-
-$rec = new utilisateurDao();
-$list = $rec->getAll();
-$n = $rec->getUserById(1)->getNom();
-$rec->insertUser($rec->getUserById(1));
-echo "$n<br>";
-foreach ($list as $item) {
-    echo $item->getId() . " - " . $item->getNom() . " - " . $item->getPrenom() . " - " . $item->getMail() . "<br>";
 }
 ?>
