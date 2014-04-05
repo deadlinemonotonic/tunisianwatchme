@@ -53,10 +53,9 @@ class CommentaireEntity{
     }
     
     public function __toString() {
-        return '<br>Commentaire={'.$this->id.','.$this->texte.'}';
+        return 'Commentaire={'.$this->id.','.$this->texte.'}';
     }
 
 }
 
 ?>
-

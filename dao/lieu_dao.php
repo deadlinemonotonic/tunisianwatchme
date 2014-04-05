@@ -1,7 +1,7 @@
 <?php
 
-include_once '../connection/connection.php';
-include_once '../entity/LieuEntity.php';
+include_once 'connection/connection.php';
+include_once 'entity/LieuEntity.php';
 
 class lieu_dao {
 
