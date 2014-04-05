@@ -1,7 +1,7 @@
 <?php
 
-include_once '../dao/utilisateur_dao.php';
-include_once '../connection/connection.php';
+include_once 'dao/utilisateur_dao.php';
+include_once 'connection/connection.php';
 
 class UtilisateurXMLParser {
 
@@ -32,7 +32,7 @@ class UtilisateurXMLParser {
                         $oXMLWriter->text($utilisateur->getId());
                    $oXMLWriter->endElement();
                    $oXMLWriter->startElement('etablissement');
-                        $oXMLWriter->text($utilisateur->getId());
+                        $oXMLWriter->text($utilisateur->getEtablissement());
                    $oXMLWriter->endElement();
                    $oXMLWriter->startElement('nom');
                         $oXMLWriter->text($utilisateur->getNom());
@@ -72,7 +72,5 @@ class UtilisateurXMLParser {
     }
 
 }
-$c = new UtilisateurXMLParser(2);
-
 
 ?>

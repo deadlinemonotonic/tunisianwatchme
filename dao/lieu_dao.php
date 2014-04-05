@@ -3,7 +3,7 @@
 include_once '../connection/connection.php';
 include_once '../entity/LieuEntity.php';
 
-class lieu_dao {
+class LieuDao {
 
     function __construct() {
         
@@ -84,5 +84,4 @@ class lieu_dao {
     }
 
 }
-
 ?>

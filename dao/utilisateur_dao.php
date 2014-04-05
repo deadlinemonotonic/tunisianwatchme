@@ -10,7 +10,6 @@ class utilisateurDao {
     }
 
     function insertUser(UtilisateurEntity $user) {
-        $etablissement = $etablissement->getEtablissement();
         $nom = $user->getNom();
         $prenom = $user->getPrenom();
         $sexe = $user->getSexe();
@@ -22,19 +21,20 @@ class utilisateurDao {
         $datenaissance = $user->getDatenaissance();
 
         //préparataion (dans une variable) de la requête SQL
-        $requete = "insert into utilisateur (etablissement,nom,prenom,sexe,adress,login,mdp,mail,type,datenaissance) "
-                . "values ('$etablissement','$nom', '$prenom', '$sexe','$adress', '$login', '$mdp', '$mail', '$type', null);";
+        $requete = "insert into utilisateur (nom,prenom,sexe,adress,login,mdp,mail,type,datenaissance) "
+                . "values ('$nom', '$prenom', '$sexe','$adress', '$login', '$mdp', '$mail', '$type', null);";
 
 
         // la fonction mysql_query permet d'exécuter la requête préparée
-        if (mysql_query($requete)or die(mysql_error())) {
+        echo "$requete";
+        if (mysql_query($requete) or die(mysql_error())) {
             echo "insertion réussie";
         }
         else
             echo "erreur lors de l'insertion";
     }
 
-    function updateUser($id,UtilisateurEntity $user) {
+    function updateUser($id, UtilisateurEntity $user) {
         $etablissement = $etablissement->getEtablissement();
         $nom = $user->getNom();
         $prenom = $user->getPrenom();
@@ -45,7 +45,7 @@ class utilisateurDao {
         $mail = $user->getMail();
         $type = $user->getType();
         $datenaissance = $user->getDatenaissance();
-        $requete = "UPDATE `utilisateur` SET `etablissement` = '$etablissement', `nom` = '$nom', `prenom` = '$prenom', `sexe` = '$sexe',`adress` = '$adress',`login` = '$login',`mdp` = '$mdp',`mail` = '$mail',`type` = '$type',`datenaissance` = '$datenaissance' WHERE `id` ='$id';";
+        $requete = "UPDATE `utilisateur` SET `idetablissement` = '$etablissement', `nom` = '$nom', `prenom` = '$prenom', `sexe` = '$sexe',`adress` = '$adress',`login` = '$login',`mdp` = '$mdp',`mail` = '$mail',`type` = '$type',`datenaissance` = '$datenaissance' WHERE `id` ='$id';";
 
         if (mysql_query($requete)) {
             echo "Update réussie";
@@ -83,7 +83,7 @@ class utilisateurDao {
             $user->setMail($result_array["mail"]);
             $user->setType($result_array["type"]);
             $user->setDatenaissance($result_array["datenaissance"]);
-                    
+
             $list[] = $user;
         }
         return $list;
@@ -112,4 +112,5 @@ class utilisateurDao {
     }
 
 }
+
 ?>

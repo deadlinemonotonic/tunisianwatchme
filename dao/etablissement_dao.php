@@ -57,7 +57,4 @@ class EtablissementDao {
     }
 
 }
-$test = new EtablissementDao();
-echo $test->getAll();
-
 ?>

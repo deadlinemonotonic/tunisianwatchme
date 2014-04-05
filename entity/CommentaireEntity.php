@@ -43,7 +43,7 @@ class CommentaireEntity{
         $this->texte = $texte;
     }
 
-    public function setUser(UtilisateurEntity $user) {
+    public function setUser($user) {
         $this->user = $user;
     }
 
@@ -61,5 +61,4 @@ class CommentaireEntity{
     
 
 }
-
 ?>
