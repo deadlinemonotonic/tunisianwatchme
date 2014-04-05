@@ -1,7 +1,7 @@
 <?php
 
-include_once 'connection/connection.php';
-include_once 'dao/domaine_dao.php';
+include_once '../connection/connection.php';
+include_once '../dao/domaine_dao.php';
 
 class domaine_xmlparser {
 
@@ -34,8 +34,9 @@ class domaine_xmlparser {
         }
         $oXMLWriter->endElement();
         $oXMLWriter->endDocument();
-        echo $oXMLWriter->outputMemory(TRUE);
+        echo $oXMLWriter->outputMemory(FALSE);
     }
 
 }
+$p=new domaine_xmlparser();
 ?>

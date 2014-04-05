@@ -1,7 +1,7 @@
 <?php
 
-include_once 'dao/utilisateur_dao.php';
-include_once 'connection/connection.php';
+include_once '../dao/utilisateur_dao.php';
+include_once '../connection/connection.php';
 
 class UtilisateurXMLParser {
 
@@ -72,5 +72,5 @@ class UtilisateurXMLParser {
     }
 
 }
-
+$p = new UtilisateurXMLParser(2);
 ?>

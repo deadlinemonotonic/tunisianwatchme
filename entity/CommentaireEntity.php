@@ -1,8 +1,7 @@
 <?php
 include_once '../entity/UtilisateurEntity.php';
 include_once '../entity/ReclamationEntity.php';
-$user = new UtilisateurEntity(); 
-$Reclamation = new ReclamationEntity();
+
 
 class CommentaireEntity{
     private $id;
@@ -43,7 +42,7 @@ class CommentaireEntity{
         $this->texte = $texte;
     }
 
-    public function setUser($user) {
+    public function setUser(UtilisateurEntity $user) {
         $this->user = $user;
     }
 

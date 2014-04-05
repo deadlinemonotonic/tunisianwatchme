@@ -1,8 +1,8 @@
 <?php
 
-include_once("../connection/connection.php");
-include_once("../entity/CommentaireEntity.php");
-include_once("../dao/utilisateur_dao.php");
+include_once '../connection/connection.php';
+include_once '../entity/CommentaireEntity.php';
+include_once '../dao/utilisateur_dao.php';
 include_once '../dao/reclamation_dao.php';
 
 class commentaire_dao {
@@ -44,7 +44,7 @@ class commentaire_dao {
         while ($result_array = mysql_fetch_array($result)) {
             
             $element->setId($result_array["id"]);
-            $element->setIdReclamation($result_array["idreclamation"]);
+            $element->setReclamation($rec->setId($result_array["idreclamation"]));
             $element->setTexte($result_array["texte"]);
             $element->setUser($result_array["idutilisateur"]);
             $element->setDate($result_array["date"]);
@@ -53,6 +53,42 @@ class commentaire_dao {
         }
         return $list;
     }
+    public function getAll() {
+        $query_search = "SELECT * FROM commentaire";
+        $query_exec = mysql_query($query_search) or die(mysql_error());
+        $list = array();
+        $rec = new reclamationDao();
+        $usr = new utilisateurDao();
+        $element = new CommentaireEntity();
+        while ($result_array = mysql_fetch_array($query_exec)) {
+            
+            $element->setId($result_array["id"]);
+            $element->setReclamation($rec->getReclamationById($result_array["idreclamation"]));
+            $element->setTexte($result_array["texte"]);
+            $element->setUser($usr->getUserById($result_array["idutilisateur"]));
+            $element->setDate($result_array["date"]);
 
+            $list[] = $element;
+        }
+        return $list;
+    }
+
+    public function getByid($id) {
+        $result = mysql_query("SELECT * FROM commentaire WHERE `id` ='$id'");
+        $list = array();
+        
+        $element = new CommentaireEntity();
+        while ($result_array = mysql_fetch_array($result)) {
+            
+            $element->setId($result_array["id"]);
+            $element->setReclamation($rec->setId($result_array["idreclamation"]));
+            $element->setTexte($result_array["texte"]);
+            $element->setUser($result_array["idutilisateur"]);
+            $element->setDate($result_array["date"]);
+
+            $list[] = $element;
+        }
+        return $list;
+    }
 }
 ?>

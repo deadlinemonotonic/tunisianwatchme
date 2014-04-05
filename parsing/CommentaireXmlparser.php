@@ -16,7 +16,7 @@ class CommentaireXmlparser {
         $this->id = $id;
         $dao = new commentaire_dao();
         if ($id == 0) {
-            $list = $dao->getAll();
+            $list[] = $dao->getAll();
         } else {
             $list[] = $dao->getByid($id);
         }
