@@ -36,7 +36,7 @@ class GeolocalisationDAO {
     function AfficheAllGeo() {
 
         $result = mysql_query("SELECT * FROM geolocalisation");
-        $list[] = array();
+        $list = array();
 
         while ($row = mysql_fetch_array($result)) {
             $geo = new GeolocalisationEntity();
