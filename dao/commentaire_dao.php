@@ -74,4 +74,11 @@ class commentaire_dao {
 
 }
 
+$dao = new commentaire_dao();
+$com = new CommentaireEntity();
+$com->setIdReclamation(1);
+$var = $dao->getByidReclamation($com);
+foreach ($var as $value) {
+    echo $value;
+}
 ?>

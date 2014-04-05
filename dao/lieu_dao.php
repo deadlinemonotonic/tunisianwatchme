@@ -84,4 +84,15 @@ class LieuDao {
     }
 
 }
+
+ $lieuDAO = new lieu_dao();
+  $lieuEntity = new LieuEntity();//optionnel
+
+  $lieuDAO = new lieu_dao();
+  //$lieuEntity = new LieuEntity();//optionnel
+
+  $listLieux = $lieuDAO->getAll();
+  foreach ($listLieux as $lieuEntity) {
+  echo "lieu " . $lieuEntity->getId() . " " . $lieuEntity->getVille() . "<br>";
+  } 
 ?>
