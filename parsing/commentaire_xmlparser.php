@@ -21,7 +21,7 @@ class CommentaireXMLParser {
         $commentaire = new CommentaireEntity();
         $oXMLWriter = new XMLWriter;
         $oXMLWriter->openMemory();
-        //$oXMLWriter->startDocument('1.0', 'UTF-8');       
+        $oXMLWriter->startDocument('1.0', 'UTF-8');       
         $oXMLWriter->startElement('commentaires');
             foreach($listCommentaires as $commentaire){
             $oXMLWriter->startElement('commentaire');
