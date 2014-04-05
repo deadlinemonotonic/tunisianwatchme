@@ -22,5 +22,5 @@ class connection {
     }
 
 }
-
+$con=new connection();
 ?>
