@@ -1,7 +1,7 @@
 <?php
 
-include_once '../connection/connection.php';
-include_once '../entity/DomaineEntity.php';
+include_once 'connection/connection.php';
+include_once 'entity/DomaineEntity.php';
 
 class domaine_dao {
 
