@@ -38,7 +38,7 @@ class lieu_dao {
         return $domm;
     }
 
-    function getDomaineByVille($ville) {
+    function getDomaineByVille(lieu_dao $ville) {
         $sql = "select * from domaine where id = '$ville'";
         $result = mysql_query($sql) or die(mysql_error());
 
@@ -52,7 +52,7 @@ class lieu_dao {
         return $domm;
     }
 
-    function insertLieu($lie) {
+    function insertLieu(lieu_dao $lie) {
         $ville = $lie->getVille();
         $result = mysql_query("insert into domaine (ville) values ('$ville')") or die(mysql_error());
         if (mysql_query($result))
@@ -61,7 +61,7 @@ class lieu_dao {
             echo "erreur lors de l'insertion";
     }
 
-    function updateLieu($id, $lie) {
+    function updateLieu($id,lieu_dao $lie) {
         $ville = $lie->getVille();
         $requete = "UPDATE `domaine` SET `ville` = '$ville' WHERE `id` ='$id';";
 

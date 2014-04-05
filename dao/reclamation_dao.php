@@ -45,7 +45,7 @@ class reclamationDao {
         return $reclamation;
     }
 
-    function insertReclamation($rec) {
+    function insertReclamation(ReclamationEntity $rec) {
 
         $desc = $rec->getDescription();
         $etat = $rec->getEtat();        
@@ -68,7 +68,7 @@ class reclamationDao {
         else echo "err<br>";
     }
 
-    function updateReclamation($id, $rec) {
+    function updateReclamation($id,ReclamationEntity $rec) {
         
         $desc = $rec->getDescription();
         $etat = $rec->getEtat();        

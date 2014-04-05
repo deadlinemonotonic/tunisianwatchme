@@ -23,4 +23,5 @@ class connection {
 
 }
 $con=new connection();
+$con->connection();
 ?>

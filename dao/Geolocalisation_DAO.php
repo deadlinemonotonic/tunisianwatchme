@@ -12,11 +12,10 @@ include_once '../entity/GeolocalistionEntity.php';
 class GeolocalisationDAO {
 
     public function __construct() {
-        $c = new connection();
-        $c->connection();
+        
     }
 
-    function Insert($geo) {
+    function Insert(GeolocalisationEntity $geo) {
         //$geo = new GeolocalisationEntity();
 
         $req = "INSERT INTO geolocalisation ( lon , lat ) VALUES ( '" . $geo->Lon() . "','" . $geo->Lat() . "')";
@@ -24,14 +23,14 @@ class GeolocalisationDAO {
         echo "********** Ajout avec succés **********<br>";
     }
 
-    function delete($geo) {
+    function delete(GeolocalisationEntity $geo) {
         //$geo = new GeolocalisationEntity();
         $req = "DELETE FROM geolocalisation WHERE lon =  '" . $geo->getLon() . "' and lat = '" . $geo->getLat() . "'";
         mysql_query($req) or die("********** Erreur de suprission **********<br>");
         echo "********** Supprission avec succés **********<br>";
     }
 
-    function update($geo) {
+    function update(GeolocalisationEntity $geo) {
         //$geo = new GeolocalisationEntity();
         $req = "UPDATE geolocalisation SET lon ='" . $geo->getLon() . "', lat ='" . $geo->getLon() . "' WHERE id ='" . $geo->getId() . "'";
         mysql_query($req) or die("********** Erreur de mise à jour **********<br>");
