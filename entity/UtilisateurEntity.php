@@ -1,5 +1,5 @@
 <?php
-
+include_once 'EtablissementEntity.php';
 class UtilisateurEntity {
 
     private $etablissement;
@@ -63,7 +63,7 @@ class UtilisateurEntity {
         return $this->datenaissance;
     }
 
-    public function setetablissement($etablissement) {
+    public function setetablissement(EtablissementEntity $etablissement) {
         $this->etablissement = $etablissement;
     }
 

@@ -2,7 +2,7 @@
 
 include_once("../connection/connection.php");
 include_once("../entity/CommentaireEntity.php");
-include_once("../entity/UtilisateurEntity.php");
+include_once("../dao/utilisateur_dao.php");
 
 class commentaire_dao {
 
