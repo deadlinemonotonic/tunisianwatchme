@@ -1,5 +1,5 @@
 <?php
-
+include_once 'EtablissementEntity.php';
 class UtilisateurEntity {
 
     private $etablissement;

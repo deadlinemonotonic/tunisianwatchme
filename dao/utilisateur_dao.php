@@ -1,7 +1,7 @@
 <?php
 
-include_once("../connection/connection.php");
-include_once("../entity/UtilisateurEntity.php");
+include_once("connection/connection.php");
+include_once("entity/UtilisateurEntity.php");
 
 class utilisateurDao {
 
@@ -112,5 +112,4 @@ class utilisateurDao {
     }
 
 }
-
 ?>

@@ -1,7 +1,7 @@
 <?php
 
-include_once '../connection/connection.php';
-include_once '../entity/LieuEntity.php';
+include_once 'connection/connection.php';
+include_once 'entity/LieuEntity.php';
 
 class lieu_dao {
 
@@ -31,9 +31,9 @@ class lieu_dao {
 
         if ($row = mysql_fetch_array($result)) {
 
-            $domm = new DomaineEntity();
+            $domm = new LieuEntity();
             $domm->setId($row['id']);
-            $domm->setNom($row['ville']);
+            $domm->setVille($row['ville']);
         }
         return $domm;
     }
