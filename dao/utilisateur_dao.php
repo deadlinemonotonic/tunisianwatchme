@@ -9,7 +9,7 @@ class utilisateurDao {
         
     }
 
-    function insertUser($user) {
+    function insertUser(UtilisateurEntity $user) {
         $nom = $user->getNom();
         $prenom = $user->getPrenom();
         $sexe = $user->getSexe();
@@ -33,7 +33,7 @@ class utilisateurDao {
             echo "erreur lors de l'insertion";
     }
 
-    function updateUser($id, $user) {
+    function updateUser($id,UtilisateurEntity $user) {
         $nom = $user->getNom();
         $prenom = $user->getPrenom();
         $sexe = $user->getSexe();
