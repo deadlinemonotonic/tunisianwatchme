@@ -37,6 +37,10 @@ if (isset($_GET["type"])) {
                 $utilisateur->setAdress($_GET["adress"]);
             else
                 $utilisateur->setAdress(null);
+            if (isset($_GET["datedenaissance"]))
+                $utilisateur->setDatenaissance($_GET["datedenaissance"]);
+            else
+                $utilisateur->setDatenaissance(null);
 
             $daoUtilisateur = new utilisateurDao();
             $daoUtilisateur->insertUser($utilisateur);
