@@ -34,28 +34,10 @@ class commentaire_dao {
         echo "********** Mise à jour avec succés **********<br>";
     }
 
-    public function getByIdUser(CommentaireEntity $com) {
-        $id=$com->getUser()->getId();
-        $result = mysql_query("SELECT * FROM commentaire WHERE idutilisateur = $id");
-        $list = array();
-
-        while ($row = mysql_fetch_array($result)) {
-            $element = new CommentaireEntity();
-
-            $element->setId($row[0]);
-            $element->setIdReclamation($row[1]);
-            $element->setTexte($row[2]);
-            $element->setUser($row[3]);
-            $element->setDate($row[4]);
-
-            $list[] = $element;
-        }
-        return $list;
-    }
-
-    public function getByidReclamation($id) {
+  
+    public function getByidReclamation($idreclamation) {
         //$com = new CommentaireEntity();
-        $result = mysql_query("SELECT * FROM commentaire WHERE idreclamation ='$id'");
+        $result = mysql_query("SELECT * FROM commentaire WHERE idreclamation = ".$idreclamation);
         $list = array();
 
         while ($row = mysql_fetch_array($result)) {
@@ -71,24 +53,5 @@ class commentaire_dao {
         }
         return $list;
     }
-
-    public function getAll() {
-        $result = mysql_query("SELECT * FROM commentaire");
-        $list = array();
-
-        while ($row = mysql_fetch_array($result)) {
-            $element = new CommentaireEntity();
-
-            $element->setId($row[0]);
-            $element->setIdReclamation($row[1]);
-            $element->setTexte($row[2]);
-            $element->setUser($row[3]);
-            $element->setDate($row[4]);
-
-            $list[] = $element;
-        }
-        return $list;
-    }
-
 }
 ?>
