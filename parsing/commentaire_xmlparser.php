@@ -10,11 +10,9 @@ class CommentaireXMLParser {
     function __construct($id) {
         $this->id = $id;
         $dao = new commentaire_dao();
-        if ($id == 0) {
-            $list = $dao->getAll();
-        } else {
+
             $list[] = $dao->getByidReclamation($id);
-        }
+        
         $this->setXML($list);
     }
 

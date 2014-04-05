@@ -34,14 +34,15 @@ class commentaire_dao {
         echo "********** Mise à jour avec succés **********<br>";
     }
 
-  
-    public function getByidReclamation($idreclamation) {
+    public function getByidReclamation($id) {
         //$com = new CommentaireEntity();
-        $result = mysql_query("SELECT * FROM commentaire WHERE idreclamation = ".$idreclamation);
+        $result = mysql_query("SELECT * FROM commentaire WHERE idreclamation ='$id'");
+        $query_exec = mysql_query($result) or die(mysql_error());
         $list = array();
-
-        while ($row = mysql_fetch_array($result)) {
-            $element = new CommentaireEntity();
+        
+        $element = new CommentaireEntity();
+        while ($row = mysql_fetch_array($query_exec)) {
+            
 
             $element->setId($row[0]);
             $element->setIdReclamation($row[1]);
@@ -53,5 +54,6 @@ class commentaire_dao {
         }
         return $list;
     }
+
 }
 ?>
