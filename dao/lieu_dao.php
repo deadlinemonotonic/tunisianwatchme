@@ -31,9 +31,9 @@ class lieu_dao {
 
         if ($row = mysql_fetch_array($result)) {
 
-            $domm = new DomaineEntity();
+            $domm = new LieuEntity();
             $domm->setId($row['id']);
-            $domm->setNom($row['ville']);
+            $domm->setVille($row['ville']);
         }
         return $domm;
     }

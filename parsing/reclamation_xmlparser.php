@@ -20,7 +20,7 @@ class ReclamationXMLParser {
     }
 
     function setXML($listReclamations) {
-        header('Content-type: text/xml; charset=UTF-8');
+       header('Content-type: text/xml; charset=UTF-8');
         $recalamtion = new ReclamationEntity();
         $oXMLWriter = new XMLWriter();
         $oXMLWriter->openMemory();
@@ -53,35 +53,32 @@ class ReclamationXMLParser {
                    $oXMLWriter->startElement('etat');
                         $oXMLWriter->text($recalamtion->getEtat());
                    $oXMLWriter->endElement();
+                   
                    $oXMLWriter->startElement('geolocalisation');
-                         $oXMLWriter->startElement('id');
-                                $oXMLWriter->text($recalamtion->getGeolocalisation()->getId());
-                         $oXMLWriter->endElement();
+                    if($recalamtion->getGeolocalisation()!=""){
                          $oXMLWriter->startElement('lon');
                                 $oXMLWriter->text($recalamtion->getGeolocalisation()->getLon());
                          $oXMLWriter->endElement();
                          $oXMLWriter->startElement('lat');
                                 $oXMLWriter->text($recalamtion->getGeolocalisation()->getLat());
                          $oXMLWriter->endElement();
+                    }
                    $oXMLWriter->endElement();
                    $oXMLWriter->startElement('lieu');
-                         $oXMLWriter->startElement('id');
-                                 $oXMLWriter->text($recalamtion->getlieu()->getId());
-                         $oXMLWriter->endElement();
                          $oXMLWriter->startElement('ville');
                                  $oXMLWriter->text($recalamtion->getlieu());
                          $oXMLWriter->endElement();
                    $oXMLWriter->endElement();
             $oXMLWriter->endElement();
+            //echo $recalamtion->getGeolocalisation();
             }
         $oXMLWriter->endElement();
-        //$oXMLWriter = xmlwriter_start_element($oXMLWriter);
         $oXMLWriter->endDocument();
         echo $oXMLWriter->outputMemory(TRUE);
     }
 
 }
 
-$test = new ReclamationXMLParser(25);
+$test = new ReclamationXMLParser(0);
 ?>
 
