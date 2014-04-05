@@ -11,7 +11,7 @@ class commentaire_dao {
         $c->connection();
     }
 
-    public function Insert($com) {
+    public function Insert(CommentaireEntity $com) {
         //$com = new CommentaireEntity();
         $req = "INSERT INTO commentaire ( idreclamation , texte , idutilisateur , date )"
                 . " VALUES (" . $com->getIdReclamation() . "," . $com->getTexte() . "," . $com->getUser() . "," . $com->getDate() . ")";
@@ -20,23 +20,23 @@ class commentaire_dao {
         echo "<br>********** Ajout avec succés **********<br>";
     }
 
-    public function Delete($com) {
+    public function Delete($id) {
         //$com = new CommentaireEntity();
-        $req = "DELETE FROM commentaire WHERE id = ".$com->getId();
+        $req = "DELETE FROM commentaire WHERE id = $Id";
         mysql_query($req) or die("********** Erreur de suprission **********<br>");
         echo "********** Supprission avec succés **********<br>";
     }
 
-    public function upDate($com) {
+    public function upDate($id,  CommentaireEntity $com) {
         //$com = new CommentaireEntity();
-        $req = "UPDATE commentaire SET idreclamation = ".$com->getIdReclamation()." , texte = '".$com->getTexte()."' WHERE id =" . $com->getId();
+        $req = "UPDATE commentaire SET idreclamation = ".$com->getIdReclamation()." , texte = '".$com->getTexte()."' WHERE id =$id";
         mysql_query($req) or die("********** Erreur de mise à jour **********<br>");
         echo "********** Mise à jour avec succés **********<br>";
     }
 
-    public function getByIdUser($com) {
-        //$com = new CommentaireEntity();
-        $result = mysql_query("SELECT * FROM commentaire WHERE idutilisateur = ".$com->getUser());
+    public function getByIdUser(CommentaireEntity $com) {
+        $id=$com->getUser()->getId();
+        $result = mysql_query("SELECT * FROM commentaire WHERE idutilisateur = $id");
         $list = array();
 
         while ($row = mysql_fetch_array($result)) {
@@ -53,7 +53,7 @@ class commentaire_dao {
         return $list;
     }
 
-    public function getByidReclamation($com) {
+    public function getByidReclamation(CommentaireEntity $com) {
         //$com = new CommentaireEntity();
         $result = mysql_query("SELECT * FROM commentaire WHERE idreclamation = ".$com->getIdReclamation());
         $list = array();

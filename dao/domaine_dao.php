@@ -52,7 +52,7 @@ class domaine_dao {
         return $domm;
     }
 
-    function insertDomaine($domm) {
+    function insertDomaine(domaine_dao $domm) {
         $name = $domm->getNom();
         $result = mysql_query("insert into domaine (nom) values ('$name')") or die(mysql_error());
         if (mysql_query($result))
@@ -61,7 +61,7 @@ class domaine_dao {
             echo "erreur lors de l'insertion";
     }
     
-    function updateDomaine($id, $domm) {
+    function updateDomaine($id,domaine_dao $domm) {
         $name = $domm->getNom();
         $requete = "UPDATE `domaine` SET `nom` = '$name' WHERE `id` ='$id';";
 
