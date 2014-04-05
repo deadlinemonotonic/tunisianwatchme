@@ -10,6 +10,7 @@ class utilisateurDao {
     }
 
     function insertUser(UtilisateurEntity $user) {
+        $etablissement = $etablissement->getEtablissement();
         $nom = $user->getNom();
         $prenom = $user->getPrenom();
         $sexe = $user->getSexe();
@@ -21,8 +22,8 @@ class utilisateurDao {
         $datenaissance = $user->getDatenaissance();
 
         //préparataion (dans une variable) de la requête SQL
-        $requete = "insert into utilisateur (nom,prenom,sexe,adress,login,mdp,mail,type,datenaissance) "
-                . "values ('$nom', '$prenom', '$sexe','$adress', '$login', '$mdp', '$mail', '$type', null);";
+        $requete = "insert into utilisateur (etablissement,nom,prenom,sexe,adress,login,mdp,mail,type,datenaissance) "
+                . "values ('$etablissement','$nom', '$prenom', '$sexe','$adress', '$login', '$mdp', '$mail', '$type', null);";
 
 
         // la fonction mysql_query permet d'exécuter la requête préparée
@@ -34,6 +35,7 @@ class utilisateurDao {
     }
 
     function updateUser($id,UtilisateurEntity $user) {
+        $etablissement = $etablissement->getEtablissement();
         $nom = $user->getNom();
         $prenom = $user->getPrenom();
         $sexe = $user->getSexe();
@@ -43,7 +45,7 @@ class utilisateurDao {
         $mail = $user->getMail();
         $type = $user->getType();
         $datenaissance = $user->getDatenaissance();
-        $requete = "UPDATE `utilisateur` SET `nom` = '$nom', `prenom` = '$prenom', `sexe` = '$sexe',`adress` = '$adress',`login` = '$login',`mdp` = '$mdp',`mail` = '$mail',`type` = '$type',`datenaissance` = '$datenaissance' WHERE `id` ='$id';";
+        $requete = "UPDATE `utilisateur` SET `etablissement` = '$etablissement', `nom` = '$nom', `prenom` = '$prenom', `sexe` = '$sexe',`adress` = '$adress',`login` = '$login',`mdp` = '$mdp',`mail` = '$mail',`type` = '$type',`datenaissance` = '$datenaissance' WHERE `id` ='$id';";
 
         if (mysql_query($requete)) {
             echo "Update réussie";
@@ -71,9 +73,17 @@ class utilisateurDao {
         while ($result_array = mysql_fetch_array($query_exec)) {
             $user = new UtilisateurEntity();
             $user->setId($result_array["id"]);
+            $user->setEtablissement($result_array["etablissement"]);
             $user->setNom($result_array["nom"]);
             $user->setPrenom($result_array["prenom"]);
+            $user->setSexe($result_array["sexe"]);
+            $user->setAdress($result_array["adress"]);
+            $user->setLogin($result_array["login"]);
+            $user->setMdp($result_array["mdp"]);
             $user->setMail($result_array["mail"]);
+            $user->setType($result_array["type"]);
+            $user->setDatenaissance($result_array["datenaissance"]);
+                    
             $list[] = $user;
         }
         return $list;
@@ -87,18 +97,20 @@ class utilisateurDao {
         if ($result_array = mysql_fetch_array($query_exec)) {
 
             $user->setId($result_array["id"]);
+            $user->setEtablissement($result_array["etablissement"]);
             $user->setNom($result_array["nom"]);
             $user->setPrenom($result_array["prenom"]);
+            $user->setSexe($result_array["sexe"]);
+            $user->setAdress($result_array["adress"]);
+            $user->setLogin($result_array["login"]);
+            $user->setMdp($result_array["mdp"]);
             $user->setMail($result_array["mail"]);
+            $user->setType($result_array["type"]);
+            $user->setDatenaissance($result_array["datenaissance"]);
         }
         return $user;
     }
 
 }
 
-$rec = new utilisateurDao();
-$list = $rec->getAll();
-foreach ($list as $item) {
-    echo $item->getId() . " - " . $item->getNom() . " - " . $item->getPrenom() . " - " . $item->getMail() . "<br>";
-}
 ?>

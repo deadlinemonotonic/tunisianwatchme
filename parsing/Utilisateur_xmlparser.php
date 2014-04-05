@@ -31,15 +31,18 @@ class UtilisateurXMLParser {
                    $oXMLWriter->startElement('id');
                         $oXMLWriter->text($utilisateur->getId());
                    $oXMLWriter->endElement();
-                  /* $oXMLWriter->startElement('nom');
+                   $oXMLWriter->startElement('etablissement');
+                        $oXMLWriter->text($utilisateur->getId());
+                   $oXMLWriter->endElement();
+                   $oXMLWriter->startElement('nom');
                         $oXMLWriter->text($utilisateur->getNom());
                    $oXMLWriter->endElement();
                    $oXMLWriter->startElement('prenom');
                         $oXMLWriter->text($utilisateur->getPrenom());
                    $oXMLWriter->endElement();
-//                   $oXMLWriter->startElement('photo');
-//                        $oXMLWriter->text($utilisateur->getPhoto());
-//                   $oXMLWriter->endElement();
+                   $oXMLWriter->startElement('photo');
+                        $oXMLWriter->text($utilisateur->getPhoto());
+                   $oXMLWriter->endElement();
                    $oXMLWriter->startElement('sexe');
                         $oXMLWriter->text($utilisateur->getSexe());
                    $oXMLWriter->endElement();
@@ -61,8 +64,6 @@ class UtilisateurXMLParser {
                    $oXMLWriter->startElement('datenaissance');
                         $oXMLWriter->text($utilisateur->getDatenaissance());
                    $oXMLWriter->endElement();
-                   * 
-                   */
             $oXMLWriter->endElement();
             }
         $oXMLWriter->endElement();
@@ -73,6 +74,6 @@ class UtilisateurXMLParser {
 
 }
 
-$test = new UtilisateurXMLParser(0);
+$test = new UtilisateurXMLParser(41);
 
 ?>
