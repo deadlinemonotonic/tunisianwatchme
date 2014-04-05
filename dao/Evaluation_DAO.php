@@ -54,9 +54,4 @@ class EvaluationDao {
     }
 
 }
-
-$dao = new EvaluationDao();
-$array = $dao->getAll();
-foreach ($array as $value) {
-    echo $value . '<br>';
-}
+?>
