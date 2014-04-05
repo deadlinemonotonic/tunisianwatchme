@@ -47,6 +47,20 @@ class ReclamationXMLParser {
                    $oXMLWriter->startElement('citoyen');
                         $oXMLWriter->text($recalamtion->getCitoyen());
                    $oXMLWriter->endElement();
+                   $oXMLWriter->startElement('domaine');
+                        $oXMLWriter->text($recalamtion->getdomaine());
+                   $oXMLWriter->endElement();
+                   $oXMLWriter->startElement('geolocalisation');
+                         $oXMLWriter->startElement('id');
+                                $oXMLWriter->text($recalamtion->getGeolocalisation()->getId());
+                         $oXMLWriter->endElement();
+                         $oXMLWriter->startElement('lon');
+                                $oXMLWriter->text($recalamtion->getGeolocalisation()->getLon());
+                         $oXMLWriter->endElement();
+                         $oXMLWriter->startElement('lat');
+                                $oXMLWriter->text($recalamtion->getGeolocalisation()->getLat());
+                         $oXMLWriter->endElement();
+                   $oXMLWriter->endElement();
             $oXMLWriter->endElement();
             }
         $oXMLWriter->endElement();
