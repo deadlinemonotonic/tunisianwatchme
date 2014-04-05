@@ -43,10 +43,10 @@ class commentaire_dao {
         while ($row = mysql_fetch_array($result)) {
             $element = new CommentaireEntity();
 
-            $element->setId($row[0]);
-            $element->setIdReclamation($row[1]);
-            $element->setTexte($row[2]);
-            $element->setUser($row[3]);
+            $element->setId($row['id']);
+            $element->setIdReclamation($row['idreclamation']);
+            $element->setTexte($row['texte']);
+            $element->setUser($row['idutilisateur']);
             $element->setDate($row[4]);
 
             $list[] = $element;
