@@ -2,11 +2,12 @@
 
 include_once("../connection/connection.php");
 include_once("../entity/ReclamationEntity.php");
-include_once("../entity/UtilisateurEntity.php");
-include_once("../entity/DomaineEntity.php");
-include_once("../entity/GeolocalistionEntity.php");
-include_once("../entity/LieuEntity.php");
-include_once("../entity/UtilisateurEntity.php");
+include_once("../dao/utilisateur_dao.php");
+include_once("../dao/domaine_dao.php");
+include_once("../dao/Geolocalisation_DAO.php");
+include_once("../dao/lieu_dao.php");
+
+
 
 class reclamationDao {
 
@@ -125,7 +126,7 @@ class reclamationDao {
 
 }
 
-$rec = new reclamationDao();
+/*$rec = new reclamationDao();
 echo "<br>";
 $rec1 = new ReclamationEntity();
 
@@ -163,5 +164,5 @@ $dom = $rec->getReclamationById(1)->getDescription();
 echo "$dom<br>";
 foreach ($list as $item) {
     echo $item->getId() . "<br>";
-}
+}*/
 ?>

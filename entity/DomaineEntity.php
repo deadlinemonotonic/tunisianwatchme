@@ -22,6 +22,10 @@ class DomaineEntity{
     public function setNom($nom) {
         $this->nom = $nom;
     }
+    
+    public function __toString() {
+        return $this->nom;
+    }
 
 }
 ?>
