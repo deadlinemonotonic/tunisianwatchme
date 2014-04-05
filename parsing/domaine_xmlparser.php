@@ -38,6 +38,4 @@ class domaine_xmlparser {
     }
 
 }
-
-$test=new domaine_xmlparser();
 ?>
