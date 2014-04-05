@@ -1,7 +1,7 @@
 <?php
 
-include_once '../connection/connection.php';
-include_once '../dao/domaine_dao.php';
+include_once 'connection/connection.php';
+include_once 'dao/domaine_dao.php';
 
 class domaine_xmlparser {
 

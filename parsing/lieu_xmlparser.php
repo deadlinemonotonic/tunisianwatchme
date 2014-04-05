@@ -1,12 +1,12 @@
 <?php
 
-include_once '../connection/connection.php';
-include_once '../dao/lieu_dao.php';
+include_once 'connection/connection.php';
+include_once 'dao/lieu_dao.php';
 
 class lieu_xmlparser{
 
     function __construct() {
-        $dao = new lieu_dao();
+        $dao = new LieuDao();
         $list = $dao->getAll();
         $this->setXML($list);
     }
