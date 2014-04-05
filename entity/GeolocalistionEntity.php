@@ -5,7 +5,8 @@ class GeolocalisationEntity{
      private $lat;
 
      function __construct() {
-         
+         $lon="";
+         $lat="";
      }
      public function getId() {
          return $this->id;
@@ -30,9 +31,9 @@ class GeolocalisationEntity{
      public function setLat($lat) {
          $this->lat = $lat;
      }
-     public function __toString() {
-         return 'id:'.$this->id.' lat:'.$this->lat.' lon:'.$this->lon;
-     }
+     //public function __toString() {
+        // return 'id:'.$this->id.' lat:'.$this->lat.' lon:'.$this->lon;
+   //  }
      
     
 

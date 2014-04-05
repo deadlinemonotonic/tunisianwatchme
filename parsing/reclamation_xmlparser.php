@@ -20,7 +20,7 @@ class ReclamationXMLParser {
     }
 
     function setXML($listReclamations) {
-        header('Content-type: text/xml; charset=UTF-8');
+       header('Content-type: text/xml; charset=UTF-8');
         $recalamtion = new ReclamationEntity();
         $oXMLWriter = new XMLWriter();
         $oXMLWriter->openMemory();
@@ -38,7 +38,7 @@ class ReclamationXMLParser {
                    $oXMLWriter->startElement('description');
                         $oXMLWriter->text($recalamtion->getDescription());
                    $oXMLWriter->endElement();
-                   /*$oXMLWriter->startElement('date');
+                   $oXMLWriter->startElement('date');
                         $oXMLWriter->text($recalamtion->getDate());
                    $oXMLWriter->endElement();
                    $oXMLWriter->startElement('heure');
@@ -50,27 +50,35 @@ class ReclamationXMLParser {
                    $oXMLWriter->startElement('domaine');
                         $oXMLWriter->text($recalamtion->getdomaine());
                    $oXMLWriter->endElement();
+                   $oXMLWriter->startElement('etat');
+                        $oXMLWriter->text($recalamtion->getEtat());
+                   $oXMLWriter->endElement();
+                   
                    $oXMLWriter->startElement('geolocalisation');
-                         $oXMLWriter->startElement('id');
-                                $oXMLWriter->text($recalamtion->getGeolocalisation()->getId());
-                         $oXMLWriter->endElement();
+                    if($recalamtion->getGeolocalisation()!=""){
                          $oXMLWriter->startElement('lon');
                                 $oXMLWriter->text($recalamtion->getGeolocalisation()->getLon());
                          $oXMLWriter->endElement();
                          $oXMLWriter->startElement('lat');
                                 $oXMLWriter->text($recalamtion->getGeolocalisation()->getLat());
                          $oXMLWriter->endElement();
-                   $oXMLWriter->endElement();*/
+                    }
+                   $oXMLWriter->endElement();
+                   $oXMLWriter->startElement('lieu');
+                         $oXMLWriter->startElement('ville');
+                                 $oXMLWriter->text($recalamtion->getlieu());
+                         $oXMLWriter->endElement();
+                   $oXMLWriter->endElement();
             $oXMLWriter->endElement();
+            //echo $recalamtion->getGeolocalisation();
             }
         $oXMLWriter->endElement();
-
         $oXMLWriter->endDocument();
         echo $oXMLWriter->outputMemory(TRUE);
     }
 
 }
 
-$test = new ReclamationXMLParser(25);
+$test = new ReclamationXMLParser(0);
 ?>
 
