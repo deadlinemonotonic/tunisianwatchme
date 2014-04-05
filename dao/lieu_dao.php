@@ -1,9 +1,9 @@
 <?php
 
-include_once '../connection/connection.php';
-include_once '../entity/LieuEntity.php';
+include_once 'connection/connection.php';
+include_once 'entity/LieuEntity.php';
 
-class lieu_dao {
+class LieuDao {
 
     function __construct() {
         
@@ -84,4 +84,15 @@ class lieu_dao {
     }
 
 }
+
+ $lieuDAO = new lieu_dao();
+  $lieuEntity = new LieuEntity();//optionnel
+
+  $lieuDAO = new lieu_dao();
+  //$lieuEntity = new LieuEntity();//optionnel
+
+  $listLieux = $lieuDAO->getAll();
+  foreach ($listLieux as $lieuEntity) {
+  echo "lieu " . $lieuEntity->getId() . " " . $lieuEntity->getVille() . "<br>";
+  } 
 ?>

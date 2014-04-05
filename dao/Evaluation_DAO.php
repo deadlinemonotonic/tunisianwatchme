@@ -6,8 +6,8 @@
  * and open the template in the editor.
  */
 
-include_once '../connection/connection.php';
-include_once '../entity/EvaluationEntity.php';
+include_once 'connection/connection.php';
+include_once 'entity/EvaluationEntity.php';
 
 class EvaluationDao {
 
@@ -55,4 +55,8 @@ class EvaluationDao {
 
 }
 
-?>
+$dao = new EvaluationDao();
+$array = $dao->getAll();
+foreach ($array as $value) {
+    echo $value . '<br>';
+}

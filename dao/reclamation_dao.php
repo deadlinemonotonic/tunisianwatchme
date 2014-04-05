@@ -1,11 +1,11 @@
 <?php
 
-include_once("../connection/connection.php");
-include_once("../entity/ReclamationEntity.php");
-include_once("../dao/utilisateur_dao.php");
-include_once("../dao/domaine_dao.php");
-include_once("../dao/Geolocalisation_DAO.php");
-include_once("../dao/lieu_dao.php");
+include_once("connection/connection.php");
+include_once("entity/ReclamationEntity.php");
+include_once("dao/utilisateur_dao.php");
+include_once("dao/domaine_dao.php");
+include_once("dao/Geolocalisation_DAO.php");
+include_once("dao/lieu_dao.php");
 
 class reclamationDao {
 
@@ -19,7 +19,7 @@ class reclamationDao {
         $list = array();
         $u = new utilisateurDao();
         $d = new domaine_dao();
-        $l = new lieu_dao();
+        $l = new LieuDao();
         $g = new GeolocalisationDAO();
         while ($result_array = mysql_fetch_array($query_exec)) {
             $reclamation = new ReclamationEntity();
@@ -45,7 +45,7 @@ class reclamationDao {
         $result = mysql_query($sql) or die(mysql_error());
         $u = new utilisateurDao();
         $d = new domaine_dao();
-        $l = new lieu_dao();
+        $l = new LieuDao();
         $g = new GeolocalisationDAO();
 
         if ($result_array = mysql_fetch_array($result)) {
@@ -80,16 +80,18 @@ class reclamationDao {
 
         $cit = $rec->getCitoyen()->getId();
         $dom = $rec->getdomaine()->getId();
-        $geo = $rec->getGeolocalisation()->getId();
+        if ($rec->getGeolocalisation() != "") {
+            $geo = $rec->getGeolocalisation()->getId();
+        }
+        else{
+            $geo = 'null';
+        }
         $lieu = $rec->getlieu()->getId();
 
 
-        $req = "INSERT INTO `reclamation` (`date`, `heure`, `description`, `titre`, `idcitoyen`, `iddomaine`, `etat`, `idgeolocalisation`, `idlieu`) VALUES (now(), now(), '$desc', '$titre', '$cit', '23', '$etat', '1', '19')";
-        $result = mysql_query($req) or die(mysql_error());
-        if ($result)
-            echo "ok<br>";
-        else
-            echo "err<br>";
+        $req = "INSERT INTO `reclamation` (`date`, `heure`, `description`, `titre`, `idcitoyen`, `iddomaine`, `etat`, `idgeolocalisation`, `idlieu`) VALUES ('$date', '$heure', '$desc', '$titre', '$cit', $dom, '$etat', $geo, $lieu)";
+        $id = mysql_query($req) or die(mysql_error());
+        return $id;
     }
 
     function updateReclamation($id, ReclamationEntity $rec) {
