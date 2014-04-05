@@ -4,6 +4,6 @@ if (isset($_GET["id"])) {
     $xml = new CommentaireXMLParser($_GET["id"]);
 }
 else{
-    $xml = new CommentaireXMLParser(1);
+    $xml = new CommentaireXMLParser(0);
 }
 ?>

@@ -37,11 +37,10 @@ class commentaire_dao {
     public function getByidReclamation($id) {
         //$com = new CommentaireEntity();
         $result = mysql_query("SELECT * FROM commentaire WHERE idreclamation ='$id'");
-        $query_exec = mysql_query($result) or die(mysql_error());
         $list = array();
         
         $element = new CommentaireEntity();
-        while ($row = mysql_fetch_array($query_exec)) {
+        while ($row = mysql_fetch_array($result)) {
             
 
             $element->setId($row[0]);
