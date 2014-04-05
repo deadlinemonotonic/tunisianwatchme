@@ -18,12 +18,22 @@ class reclamationDao {
         $query_search = "SELECT * FROM reclamation";
         $query_exec = mysql_query($query_search) or die(mysql_error());
         $list = array();
+        $u =new utilisateurDao();
+        $d = new domaine_dao();
+        $l = new lieu_dao();
+        $g = new GeolocalisationDAO();
         while ($result_array = mysql_fetch_array($query_exec)) {
             $reclamation = new ReclamationEntity();
             $reclamation->setId($result_array["id"]);
             $reclamation->setTitre($result_array["titre"]);
             $reclamation->setDescription($result_array["description"]);
             $reclamation->setEtat($result_array["etat"]);
+            $reclamation->setDate($result_array["date"]);
+            $reclamation->setHeure($result_array["heure"]);
+            $reclamation->setCitoyen($u->getUserById($result_array["idcitoyen"]));
+            $reclamation->setGeolocalisation($g->getGeoById($result_array["idgeolocalisation"]));
+            $reclamation->setlieu($l->getLieuById($result_array["idlieu"]));
+            $reclamation->setdomaine($d->getDomaineById($result_array["iddomaine"]));
             $list[] = $reclamation;
         }
         return $list;
@@ -32,7 +42,10 @@ class reclamationDao {
     function getReclamationById($id) {
         $sql = "select * from reclamation where id = $id";
         $result = mysql_query($sql) or die(mysql_error());
-
+        $u =new utilisateurDao();
+        $d = new domaine_dao();
+        $l = new lieu_dao();
+        $g = new GeolocalisationDAO();
 
         if ($result_array = mysql_fetch_array($result)) {
 
@@ -41,6 +54,12 @@ class reclamationDao {
             $reclamation->setTitre($result_array["titre"]);
             $reclamation->setDescription($result_array["description"]);
             $reclamation->setEtat($result_array["etat"]);
+            $reclamation->setDate($result_array["date"]);
+            $reclamation->setHeure($result_array["heure"]);
+            $reclamation->setCitoyen($u->getUserById($result_array["idcitoyen"]));
+            $reclamation->setGeolocalisation($g->getGeoById($result_array["idgeolocalisation"]));
+            $reclamation->setlieu($l->getLieuById($result_array["idlieu"]));
+            $reclamation->setdomaine($d->getDomaineById($result_array["iddomaine"]));
         }
         return $reclamation;
     }
