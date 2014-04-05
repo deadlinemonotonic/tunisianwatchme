@@ -67,12 +67,4 @@ class GeolocalisationDAO {
     }
 
 }
-
-
-
-$dao = new GeolocalisationDAO();
-$list = $dao->AfficheAllGeo();
-foreach ($list as $entity) {
-    echo $entity . "<br>";
-}
-
+?>

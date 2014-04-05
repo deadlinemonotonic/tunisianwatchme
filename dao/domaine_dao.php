@@ -85,13 +85,4 @@ class domaine_dao {
 
 }
 
-$domDAO = new domaine_dao();
-$DomEntity = new DomaineEntity(); //optionnel
-$listDomaines = $domDAO->getAll();
-$DomEntity->setNom("farouk");
-//$domDAO->insertDomaine($DomEntity);
-$domDAO->deleteDomaine(27);
-foreach ($listDomaines as $DomEntity) {
-    echo "domaine " . $DomEntity->getId() . " " . $DomEntity->getNom() . "<br>";
-}
 ?>

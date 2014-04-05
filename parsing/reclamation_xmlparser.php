@@ -22,7 +22,7 @@ class ReclamationXMLParser {
     function setXML($listReclamations) {
         header('Content-type: text/xml; charset=UTF-8');
         $recalamtion = new ReclamationEntity();
-        $oXMLWriter = new XMLWriter;
+        $oXMLWriter = new XMLWriter();
         $oXMLWriter->openMemory();
         $oXMLWriter->startDocument('1.0', 'UTF-8');
         
@@ -38,7 +38,7 @@ class ReclamationXMLParser {
                    $oXMLWriter->startElement('description');
                         $oXMLWriter->text($recalamtion->getDescription());
                    $oXMLWriter->endElement();
-                   $oXMLWriter->startElement('date');
+                   /*$oXMLWriter->startElement('date');
                         $oXMLWriter->text($recalamtion->getDate());
                    $oXMLWriter->endElement();
                    $oXMLWriter->startElement('heure');
@@ -60,7 +60,7 @@ class ReclamationXMLParser {
                          $oXMLWriter->startElement('lat');
                                 $oXMLWriter->text($recalamtion->getGeolocalisation()->getLat());
                          $oXMLWriter->endElement();
-                   $oXMLWriter->endElement();
+                   $oXMLWriter->endElement();*/
             $oXMLWriter->endElement();
             }
         $oXMLWriter->endElement();
@@ -71,6 +71,6 @@ class ReclamationXMLParser {
 
 }
 
-$test = new ReclamationXMLParser(0);
+$test = new ReclamationXMLParser(25);
 ?>
 
