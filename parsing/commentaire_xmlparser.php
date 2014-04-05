@@ -5,20 +5,18 @@ include_once 'connection/connection.php';
 
 class CommentaireXMLParser {
 
-    private $id;
 
     function __construct($id) {
-        $this->id = $id;
         $dao = new commentaire_dao();
 
-            $list[] = $dao->getByidReclamation($id);
+            $list = $dao->getByidReclamation($id);
         
         $this->setXML($list);
     }
 
     function setXML($listCommentaires) {
         header('Content-type: text/xml; charset=UTF-8');
-        $commentaire = new CommentaireEntity();
+        //$commentaire = new CommentaireEntity();
         $oXMLWriter = new XMLWriter;
         $oXMLWriter->openMemory();
         $oXMLWriter->startDocument('1.0', 'UTF-8');       
@@ -31,10 +29,10 @@ class CommentaireXMLParser {
                    $oXMLWriter->startElement('texte');
                         $oXMLWriter->text($commentaire->getTexte());
                    $oXMLWriter->endElement();
-                   $oXMLWriter->startElement('user');
+                   $oXMLWriter->startElement('idutilisateur');
                         $oXMLWriter->text($commentaire->getUser());
                    $oXMLWriter->endElement();
-                   $oXMLWriter->startElement('idReclamation');
+                   $oXMLWriter->startElement('idreclamation');
                         $oXMLWriter->text($commentaire->getIdReclamation());
                    $oXMLWriter->endElement();
                    $oXMLWriter->startElement('date');
@@ -49,4 +47,3 @@ class CommentaireXMLParser {
 
 }
 ?>
-
