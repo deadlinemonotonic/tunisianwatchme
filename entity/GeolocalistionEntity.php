@@ -3,6 +3,7 @@ class GeolocalisationEntity{
      private $id;
      private $lon;
      private $lat;
+     private $idreclamation;
 
      function __construct() {
          $lon="";
@@ -19,7 +20,17 @@ class GeolocalisationEntity{
      public function getLat() {
          return $this->lat;
      }
+     
+     public function getIdreclamation() {
+         return $this->idreclamation;
+     }
 
+    
+     public function setIdreclamation($idreclamation) {
+         $this->idreclamation = $idreclamation;
+     }
+
+     
      public function setId($id) {
          $this->id = $id;
      }
