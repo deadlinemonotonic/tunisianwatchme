@@ -7,5 +7,6 @@
  */
 
 include_once 'parsing/lieu_xmlparser.php';
-$xml = new lieu_xmlparser(4);
+
+$xml = new lieu_xmlparser($_GET['id']);
 ?>
