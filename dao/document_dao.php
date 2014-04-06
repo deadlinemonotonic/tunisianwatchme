@@ -15,7 +15,7 @@ include_once("entity/DocumentEntity.php");
 class DocumentDao {
 
     function getDocumentByIdReclamation($idRec) {
-        $sql = "select * from document where idreclamation = " . $idRec;
+        $sql = "select * from document where type = 1 and idreclamation = " . $idRec;
         $result = mysql_query($sql) or die(mysql_error());
         $list = array();
 
