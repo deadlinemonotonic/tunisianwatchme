@@ -29,7 +29,7 @@ if (isset($_GET["type"])) {
             $utilisateur->setMdp($_GET["mdp"]);
             $utilisateur->setMail($_GET["mail"]);
             $utilisateur->setType('c');
-            if (isset($_GET["photo"]))
+            if (is_uploaded_file($_FILES['filename']['tmp_name']))
                 $utilisateur->setPhoto($_GET["photo"]);
             else
                 $utilisateur->setPhoto(null);

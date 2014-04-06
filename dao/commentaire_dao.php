@@ -38,10 +38,9 @@ class commentaire_dao {
         //$com = new CommentaireEntity();
         $result = mysql_query("SELECT * FROM commentaire WHERE `idreclamation` ='$id'");
         $list = array();
-        
-        $element = new CommentaireEntity();
+       
         while ($result_array = mysql_fetch_array($result)) {
-            
+            $element = new CommentaireEntity();
             $element->setId($result_array["id"]);
             $element->setIdReclamation($result_array["idreclamation"]);
             $element->setTexte($result_array["texte"]);
