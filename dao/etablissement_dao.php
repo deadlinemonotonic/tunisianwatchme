@@ -4,7 +4,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
+include_once '../connection/connection.php';
+include_once '../dao/lieu_dao.php';
+include_once '../dao/utilisateur_dao.php';
 /**
  * Description of etablissement_dao
  *

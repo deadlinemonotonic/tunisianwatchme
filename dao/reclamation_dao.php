@@ -1,11 +1,11 @@
 <?php
 
-include_once("connection/connection.php");
-include_once("entity/ReclamationEntity.php");
-include_once("dao/utilisateur_dao.php");
-include_once("dao/domaine_dao.php");
-include_once("dao/Geolocalisation_DAO.php");
-include_once("dao/lieu_dao.php");
+include_once("../connection/connection.php");
+include_once("../entity/ReclamationEntity.php");
+include_once("../dao/utilisateur_dao.php");
+include_once("../dao/domaine_dao.php");
+include_once("../dao/Geolocalisation_DAO.php");
+include_once("../dao/lieu_dao.php");
 
 class reclamationDao {
 
@@ -41,7 +41,7 @@ class reclamationDao {
     }
 
     function getReclamationById($id) {
-        $sql = "select * from reclamation where id = $id";
+        $sql = "select * from reclamation where id = ".$id;
         $result = mysql_query($sql) or die(mysql_error());
         $u = new utilisateurDao();
         $d = new domaine_dao();

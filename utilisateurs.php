@@ -29,7 +29,7 @@ if (isset($_GET["type"])) {
             $utilisateur->setMdp($_GET["mdp"]);
             $utilisateur->setMail($_GET["mail"]);
             $utilisateur->setType('c');
-            if (is_uploaded_file($_FILES['filename']['tmp_name']))
+            if (isset($_GET["photo"]))
                 $utilisateur->setPhoto($_GET["photo"]);
             else
                 $utilisateur->setPhoto(null);
@@ -49,6 +49,33 @@ if (isset($_GET["type"])) {
         if (isset($_GET['id'])) {
             $daoUtilisateur = new utilisateurDao();
             $daoUtilisateur->deleteUser($_GET['id']);
+        }
+    }else if ($_GET["type"] == "update"&&isset ($_GET['id'])) {
+        if (isset($_GET['nom']) && isset($_GET['prenom']) && isset($_GET['sexe']) && isset($_GET['login']) && isset($_GET['mdp']) && isset($_GET['mail'])) {
+            $utilisateur = new UtilisateurEntity();
+
+            $utilisateur->setNom($_GET["nom"]);
+            $utilisateur->setPrenom($_GET["prenom"]);
+            $utilisateur->setSexe($_GET["sexe"]);
+            $utilisateur->setLogin($_GET["login"]);
+            $utilisateur->setMdp($_GET["mdp"]);
+            $utilisateur->setMail($_GET["mail"]);
+            $utilisateur->setType('c');
+            if (isset($_GET["photo"]))
+                $utilisateur->setPhoto($_GET["photo"]);
+            else
+                $utilisateur->setPhoto(null);
+            if (isset($_GET["adress"]))
+                $utilisateur->setAdress($_GET["adress"]);
+            else
+                $utilisateur->setAdress(null);
+            if (isset($_GET["datedenaissance"]))
+                $utilisateur->setDatenaissance($_GET["datedenaissance"]);
+            else
+                $utilisateur->setDatenaissance(null);
+
+            $daoUtilisateur = new utilisateurDao();
+            $daoUtilisateur->updateUserUser($id,$utilisateur);
         }
     }
 }

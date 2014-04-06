@@ -97,6 +97,10 @@ class ReclamationEntity {
         $this->lieu = $lieu;
     }
     
+    public function __toString() {
+        return $this->domaine.' '. $this->description;
+    }
+    
 }
 
 ?>
