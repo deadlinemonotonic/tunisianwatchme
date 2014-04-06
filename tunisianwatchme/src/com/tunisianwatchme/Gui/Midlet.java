@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.tunisianwatchme.Gui;
+
 
 import javax.microedition.midlet.*;
 
