@@ -29,14 +29,7 @@ class CommentaireXMLParser {
             $oXMLWriter->text($commentaire->getTexte());
             $oXMLWriter->endElement();
             $oXMLWriter->startElement('utilisateur');
-            if ($commentaire->getUser() != "") {
-                $oXMLWriter->startElement('nom');
-                $oXMLWriter->text($commentaire->getUser()->getNom());
-                $oXMLWriter->endElement();
-                $oXMLWriter->startElement('prenom');
-                $oXMLWriter->text($commentaire->getUser()->getPrenom());
-                $oXMLWriter->endElement();
-            }
+            $oXMLWriter->text($commentaire->getUser());
             $oXMLWriter->endElement();
             $oXMLWriter->startElement('idreclamation');
             $oXMLWriter->text($commentaire->getReclamation());
