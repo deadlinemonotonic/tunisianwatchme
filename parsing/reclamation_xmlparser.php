@@ -7,7 +7,6 @@ class ReclamationXMLParser {
 
     function __construct($id) {
         $dao = new reclamationDao();
-        //$list = array();
         if ($id == 0) {
             $list = $dao->getALL();
         } else {

@@ -7,7 +7,7 @@ include_once("dao/domaine_dao.php");
 include_once("dao/document_dao.php");
 include_once("dao/Geolocalisation_DAO.php");
 include_once("dao/lieu_dao.php");
-
+include_once("dao/Evaluation_DAO");
 class reclamationDao {
 
     function __construct() {
@@ -51,7 +51,7 @@ class reclamationDao {
         $d = new domaine_dao();
         $l = new LieuDao();
         $g = new GeolocalisationDAO();
-
+        $e = new EvaluationDao();
         if ($result_array = mysql_fetch_array($result)) {
 
             $reclamation = new ReclamationEntity();
@@ -64,6 +64,8 @@ class reclamationDao {
             if ($result_array["idgeolocalisation"] != "") {
                 $reclamation->setGeolocalisation($g->getGeoById($result_array["idgeolocalisation"]));
             }
+            
+            $reclamation->setEvaluations($e->getEvaluationsByReclamation($result_array["id"]));
             $reclamation->setCitoyen($u->getUserById($result_array["idcitoyen"]));
             $reclamation->setlieu($l->getLieuById($result_array["idlieu"]));
             $reclamation->setdomaine($d->getDomaineById($result_array["iddomaine"]));
