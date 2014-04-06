@@ -31,9 +31,9 @@ class UtilisateurXMLParser {
                    $oXMLWriter->startElement('id');
                         $oXMLWriter->text($utilisateur->getId());
                    $oXMLWriter->endElement();
-//                   $oXMLWriter->startElement('etablissement');
-//                        $oXMLWriter->text($utilisateur->getEtablissement());
-//                   $oXMLWriter->endElement();
+                   $oXMLWriter->startElement('etablissement');
+                        $oXMLWriter->text($utilisateur->getEtablissement());
+                   $oXMLWriter->endElement();
                    $oXMLWriter->startElement('nom');
                         $oXMLWriter->text($utilisateur->getNom());
                    $oXMLWriter->endElement();

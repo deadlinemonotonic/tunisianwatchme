@@ -130,7 +130,6 @@ class reclamationDao {
     }
 
 }
-
 /* $rec = new reclamationDao();
   echo "<br>";
   $rec1 = new ReclamationEntity();
