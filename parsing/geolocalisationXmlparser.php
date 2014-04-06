@@ -5,6 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+include_once 'connection/connection.php';
 include_once 'dao/Geolocalisation_DAO.php';
 
 class GeolocalisationXmlparser{
@@ -19,6 +20,7 @@ class GeolocalisationXmlparser{
         $oXMLWriter = new XMLWriter();
         $oXMLWriter->openMemory();
         $oXMLWriter->startDocument('1.0', 'UTF-8');
+        $oXMLWriter->startElement('geolocalisations');
             $oXMLWriter->startElement('geolocalisation');
                 $oXMLWriter->startElement('id');
                     $oXMLWriter->text($geo->getId());
@@ -31,6 +33,7 @@ class GeolocalisationXmlparser{
                 $oXMLWriter->endElement();
             $oXMLWriter->endElement();
         $oXMLWriter->endDocument();
+        $oXMLWriter->endElement();
         echo $oXMLWriter->outputMemory(TRUE);
     }
 }

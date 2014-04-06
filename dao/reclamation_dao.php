@@ -8,6 +8,7 @@ include_once("dao/document_dao.php");
 include_once("dao/Geolocalisation_DAO.php");
 include_once("dao/lieu_dao.php");
 include_once("dao/Evaluation_DAO.php");
+
 class reclamationDao {
 
     function __construct() {
@@ -60,11 +61,10 @@ class reclamationDao {
             $reclamation->setDate($result_array["date"]);
             $reclamation->setHeure($result_array["heure"]);
             if ($result_array["idgeolocalisation"] != "") {
-                $reclamation->setGeolocalisation($g->getGeoById($result_array["idgeolocalisation"]));
+                $reclamation->setGeolocalisation($result_array["idgeolocalisation"]);
             }
-            
-            $reclamation->setEvaluations($e->getEvaluationsByReclamation($result_array["id"]));
-            $reclamation->setCitoyen($u->getUserById($result_array["idcitoyen"]));
+            if ($result_array["idcitoyen"] != "")
+                $reclamation->setCitoyen($u->getUserById($result_array["idcitoyen"]));
             $reclamation->setlieu($l->getLieuById($result_array["idlieu"]));
             $reclamation->setdomaine($d->getDomaineById($result_array["iddomaine"]));
         }
