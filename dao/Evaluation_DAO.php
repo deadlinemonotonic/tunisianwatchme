@@ -36,8 +36,8 @@ class EvaluationDao {
         echo "********** Mise à jour avec succés **********<br>";
     }
 
-    function getAll() {
-        $result = mysql_query("SELECT * FROM evaluation");
+    function getEvaluationsByReclamation($idreclamation) {
+        $result = mysql_query("SELECT * FROM evaluation where idreclamation=".$idreclamation);
         $list = array();
 
         while ($row = mysql_fetch_array($result)) {
