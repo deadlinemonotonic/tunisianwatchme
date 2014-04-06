@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package tunisianwatchme;
+
 
 import javax.microedition.midlet.*;
 
