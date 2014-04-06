@@ -42,7 +42,7 @@ class CommentaireEntity{
         $this->texte = $texte;
     }
 
-    public function setUser(UtilisateurEntity $user) {
+    public function setUser($user) {
         $this->user = $user;
     }
 
@@ -50,7 +50,7 @@ class CommentaireEntity{
         $this->date = $date;
     }
 
-    public function setReclamation(ReclamationEntity $Reclamation) {
+    public function setReclamation($Reclamation) {
         $this->Reclamation = $Reclamation;
     }
     
