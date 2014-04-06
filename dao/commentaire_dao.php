@@ -15,16 +15,16 @@ class commentaire_dao {
     public function Insert(CommentaireEntity $com) {
         //$com = new CommentaireEntity();
         $req = "INSERT INTO commentaire ( idreclamation , texte , idutilisateur , date )"
-                . " VALUES (" . $com->getReclamation()->getid() . "," . $com->getTexte() . "," . $com->getUser()->getid() . "," . $com->getDate() . ")";
+                . " VALUES (" . $com->getReclamation() . "," . $com->getTexte() . "," . $com->getUser() . "," . $com->getDate() . ")";
         mysql_query($req) or
-                die("<br>*********** Erreur d'ajoute ***********<br>");
+                die("<br>*********** Erreur d'ajout ***********<br>");
         echo "<br>********** Ajout avec succés **********<br>";
     }
 
     public function Delete($id) {
         //$com = new CommentaireEntity();
         $req = "DELETE FROM commentaire WHERE id = $Id";
-        mysql_query($req) or die("********** Erreur de suprission **********<br>");
+        mysql_query($req) or die("********** Erreur de supression **********<br>");
         echo "********** Supprission avec succés **********<br>";
     }
 
@@ -43,7 +43,7 @@ class commentaire_dao {
         while ($result_array = mysql_fetch_array($result)) {
             $element = new CommentaireEntity();
             $element->setId($result_array["id"]);
-            $element->setReclamation($rec->setId($result_array["idreclamation"]));
+            $element->setReclamation($result_array["idreclamation"]);
             $element->setTexte($result_array["texte"]);
             $element->setUser($result_array["idutilisateur"]);
             $element->setDate($result_array["date"]);

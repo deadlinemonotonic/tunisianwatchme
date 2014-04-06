@@ -33,7 +33,7 @@ class CommentaireXMLParser {
                         $oXMLWriter->text($commentaire->getUser());
                    $oXMLWriter->endElement();
                    $oXMLWriter->startElement('idreclamation');
-                        $oXMLWriter->text($commentaire->getIdReclamation());
+                        $oXMLWriter->text($commentaire->getReclamation());
                    $oXMLWriter->endElement();
                    $oXMLWriter->startElement('date');
                         $oXMLWriter->text($commentaire->getDate());
