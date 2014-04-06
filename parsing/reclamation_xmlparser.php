@@ -20,6 +20,7 @@ class ReclamationXMLParser {
         $oXMLWriter = new XMLWriter;
         $oXMLWriter->openMemory();
         $oXMLWriter->startDocument('1.0', 'UTF-8');
+  
         
         $oXMLWriter->startElement('reclamations');
             foreach($listReclamations as $recalamtion){
