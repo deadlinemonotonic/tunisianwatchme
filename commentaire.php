@@ -12,16 +12,16 @@ if (isset($_GET["type"])) {
         if (isset($_GET["id"])) {
             $xml = new CommentaireXMLParser($_GET["id"]);
         } else {
-            $xml = new CommentaireXMLParser(0);
+            $xml = new CommentaireXMLParser(1);
         }
     } else if ($_GET["type"] == "add") {
         if (isset($_GET['texte']) && isset($_GET['idutilisateur']) && isset($_GET['idreclamation']) && isset($_GET['date'])) {
             $commentaire = new CommentaireEntity();
 
-            $commentaire->setNom($_GET["texte"]);
-            $commentaire->setPrenom($_GET["idutilisateur"]);
-            $commentaire->setSexe($_GET["idreclamation"]);
-            $commentaire->setLogin($_GET["date"]);
+            $commentaire->setTexte($_GET["texte"]);
+            $commentaire->setUser($_GET["idutilisateur"]);
+            $commentaire->setReclamation($_GET["idreclamation"]);
+            $commentaire->setDate($_GET["date"]);
             
 
             $daoCommentaire = new commentaire_dao();
@@ -36,10 +36,10 @@ if (isset($_GET["type"])) {
         if (isset($_GET['texte']) && isset($_GET['idutilisateur']) && isset($_GET['idreclamation']) && isset($_GET['date'])) {
             $commentaire = new CommentaireEntity();
 
-            $commentaire->setNom($_GET["texte"]);
-            $commentaire->setPrenom($_GET["idutilisateur"]);
-            $commentaire->setSexe($_GET["idreclamation"]);
-            $commentaire->setLogin($_GET["date"]);
+            $commentaire->setTexte($_GET["texte"]);
+            $commentaire->setUser($_GET["idutilisateur"]);
+            $commentaire->setReclamation($_GET["idreclamation"]);
+            $commentaire->setDate($_GET["date"]);
 
             $daoCommentaire = new commentaire_dao();
             $daoCommentaire->upDate($id,$commentaire);
