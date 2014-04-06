@@ -1,10 +1,14 @@
 <?php
+include_once 'entity/UtilisateurEntity.php';
+include_once 'entity/ReclamationEntity.php';
+
+
 class CommentaireEntity{
     private $id;
     private $texte;
     private $user;
     private $date;
-    private $idReclamation;
+    private $Reclamation;
 
     
     function __construct() {
@@ -26,8 +30,8 @@ class CommentaireEntity{
         return $this->date;
     }
 
-    public function getIdReclamation() {
-        return $this->idReclamation;
+    public function getReclamation() {
+        return $this->Reclamation;
     }
 
     public function setId($id) {
@@ -46,11 +50,14 @@ class CommentaireEntity{
         $this->date = $date;
     }
 
-    public function setIdReclamation($idReclamation) {
-        $this->idReclamation = $idReclamation;
+    public function setReclamation($Reclamation) {
+        $this->Reclamation = $Reclamation;
     }
+    
+    public function __toString() {
+        return 'Commentaire={'.$this->id.','.$this->texte.'}';
+    }
+    
 
 }
-
 ?>
-

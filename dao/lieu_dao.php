@@ -1,9 +1,9 @@
 <?php
 
-include_once '../connection/connection.php';
-include_once '../entity/LieuEntity.php';
+include_once 'connection/connection.php';
+include_once 'entity/LieuEntity.php';
 
-class lieu_dao {
+class LieuDao {
 
     function __construct() {
         
@@ -31,14 +31,14 @@ class lieu_dao {
 
         if ($row = mysql_fetch_array($result)) {
 
-            $domm = new DomaineEntity();
+            $domm = new LieuEntity();
             $domm->setId($row['id']);
-            $domm->setNom($row['ville']);
+            $domm->setVille($row['ville']);
         }
         return $domm;
     }
 
-    function getDomaineByVille($ville) {
+    function getDomaineByVille(lieu_dao $ville) {
         $sql = "select * from domaine where id = '$ville'";
         $result = mysql_query($sql) or die(mysql_error());
 
@@ -52,7 +52,7 @@ class lieu_dao {
         return $domm;
     }
 
-    function insertLieu($lie) {
+    function insertLieu(lieu_dao $lie) {
         $ville = $lie->getVille();
         $result = mysql_query("insert into domaine (ville) values ('$ville')") or die(mysql_error());
         if (mysql_query($result))
@@ -61,7 +61,7 @@ class lieu_dao {
             echo "erreur lors de l'insertion";
     }
 
-    function updateLieu($id, $lie) {
+    function updateLieu($id,lieu_dao $lie) {
         $ville = $lie->getVille();
         $requete = "UPDATE `domaine` SET `ville` = '$ville' WHERE `id` ='$id';";
 
@@ -84,15 +84,4 @@ class lieu_dao {
     }
 
 }
-
-/* $lieuDAO = new lieu_dao();
-  $lieuEntity = new LieuEntity();//optionnel
-
-  $lieuDAO = new lieu_dao();
-  //$lieuEntity = new LieuEntity();//optionnel
-
-  $listLieux = $lieuDAO->getAll();
-  foreach ($listLieux as $lieuEntity) {
-  echo "lieu " . $lieuEntity->getId() . " " . $lieuEntity->getVille() . "<br>";
-  } */
 ?>

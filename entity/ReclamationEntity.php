@@ -1,5 +1,7 @@
 <?php
 
+include_once 'DocumentEntity.php';
+
 class ReclamationEntity {
 
     private $id;
@@ -12,9 +14,28 @@ class ReclamationEntity {
     private $etat;
     private $geolocalisation;
     private $lieu;
+    private $documents;
+    private $evaluations;
 
     function __construct() {
-        
+        $documents = array();
+        $evaluations = array();
+    }
+
+    public function getEvaluations() {
+        return $this->evaluations;
+    }
+
+    public function setEvaluations($evaluations) {
+        $this->evaluations = $evaluations;
+    }
+
+    public function getDocuments() {
+        return $this->documents;
+    }
+
+    public function setDocuments($documents) {
+        $this->documents = $documents;
     }
 
     public function getId() {
@@ -77,11 +98,11 @@ class ReclamationEntity {
         $this->titre = $titre;
     }
 
-    public function setCitoyen($citoyen) {
+    public function setCitoyen(UtilisateurEntity $citoyen) {
         $this->citoyen = $citoyen;
     }
 
-    public function setdomaine($domaine) {
+    public function setdomaine(DomaineEntity $domaine) {
         $this->domaine = $domaine;
     }
 
@@ -89,12 +110,20 @@ class ReclamationEntity {
         $this->etat = $etat;
     }
 
-    public function setGeolocalisation($geolocalisation) {
+    public function setGeolocalisation(GeolocalisationEntity $geolocalisation) {
         $this->geolocalisation = $geolocalisation;
     }
 
-    public function setlieu($lieu) {
+    public function addDocument(DocumentEntity $document) {
+        $this->documents[] = $document;
+    }
+
+    public function setlieu(LieuEntity $lieu) {
         $this->lieu = $lieu;
+    }
+
+    public function __toString() {
+        return $this->domaine . ' ' . $this->description;
     }
 
 }

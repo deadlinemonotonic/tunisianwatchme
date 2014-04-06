@@ -6,8 +6,8 @@
  * and open the template in the editor.
  */
 
-include_once '../connection/connection.php';
-include_once '../entity/EvaluationEntity.php';
+include_once 'connection/connection.php';
+include_once 'entity/EvaluationEntity.php';
 
 class EvaluationDao {
 
@@ -18,15 +18,13 @@ class EvaluationDao {
     function Insert($note, $idreclamation, $idcitoyen) {
         //$Evaluation = new EvaluationEntity();
         $req = "INSERT INTO evaluation ( note,idreclamation,idcitoyen ) VALUES (" . $note . "," . $idreclamation . "," . $idcitoyen . ")";
-        mysql_query($req) or die("********** Erreur d'ajoute **********<br>");
-        echo "********** Ajout avec succés **********<br>";
+        mysql_query($req) or die("********** Erreur d'ajout **********<br>");
     }
 
     function Delete($Evaluation) {
         //$Evaluation = new EvaluationEntity();
         $req = "DELETE FROM evaluation WHERE idreclamation =  " . $Evaluation->getreclamation() . " and idcitoyen = " . $Evaluation->getcitoyen();
-        mysql_query($req) or die("********** Erreur de suprission **********<br>");
-        echo "********** Supprission avec succés **********<br>";
+        mysql_query($req) or die("********** Erreur de supression **********<br>");
     }
 
     function upDate($id, $Evaluation) {
@@ -38,8 +36,8 @@ class EvaluationDao {
         echo "********** Mise à jour avec succés **********<br>";
     }
 
-    function getAll() {
-        $result = mysql_query("SELECT * FROM evaluation");
+    function getEvaluationsByReclamation($idreclamation) {
+        $result = mysql_query("SELECT * FROM evaluation where idreclamation=".$idreclamation);
         $list = array();
 
         while ($row = mysql_fetch_array($result)) {
@@ -55,22 +53,4 @@ class EvaluationDao {
 
 }
 
-$dao = new EvaluationDao();
-
-$dao->Insert(2, 2, 10);
-$array = $dao->getAll();
-foreach ($array as $value) {
-    echo $value . '<br>';
-}
-//$entity = new EvaluationEntity();
-//$dao->Insert(9, 1, 10);
-
-//foreach ($array as $value) {
-//    echo $value . '<br>';
-//}
-
-//$dao->Delete($array[0]);
-//$array = $dao->getAll();
-//foreach ($array as $value) {
-//    echo $value . '<br>';
-//}
+?>

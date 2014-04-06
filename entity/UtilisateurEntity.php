@@ -1,5 +1,5 @@
 <?php
-
+include_once 'EtablissementEntity.php';
 class UtilisateurEntity {
 
     private $etablissement;
@@ -15,7 +15,7 @@ class UtilisateurEntity {
     private $type;
     private $datenaissance;
 
-    public function getetablissement() {
+    public function getEtablissement() {
         return $this->etablissement;
     }
 
@@ -63,7 +63,7 @@ class UtilisateurEntity {
         return $this->datenaissance;
     }
 
-    public function setetablissement($etablissement) {
+    public function setEtablissement($etablissement) {
         $this->etablissement = $etablissement;
     }
 
@@ -115,6 +115,9 @@ class UtilisateurEntity {
         
     }
 
+     public function __toString() {
+        return $this->nom." ".$this->prenom;
+    }
+    
 }
-
 ?>

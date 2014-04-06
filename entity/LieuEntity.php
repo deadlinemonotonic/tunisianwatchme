@@ -25,6 +25,11 @@ class LieuEntity {
         $this->ville = $ville;
     }
 
+    public function __toString() {
+        return $this->getVille();
+    }
+
+    
 }
 
 ?>
