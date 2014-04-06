@@ -1,14 +1,12 @@
 <?php
 
 include_once 'dao/document_dao.php';
-
-class ReclamationXMLParser {
+include_once 'connection/connection.php';
+class DocumentXMLParser {
 
     function __construct($id) {
         $dao = new DocumentDao();
-        if ($id == 0) {
-            $list = $dao->getReclamationById($id);
-        }
+        $list = $dao->getDocumentByIdReclamation($id);
         $this->setXML($list);
     }
 
@@ -18,7 +16,6 @@ class ReclamationXMLParser {
         $oXMLWriter->openMemory();
         $oXMLWriter->startDocument('1.0', 'UTF-8');
         $oXMLWriter->startElement('documents');
-            $document = new DocumentEntity();
             foreach($list as $document){
                 $oXMLWriter->startElement('document');
                     $oXMLWriter->startElement('nom');
@@ -31,6 +28,8 @@ class ReclamationXMLParser {
             }
             
         $oXMLWriter->endElement();
+        echo $oXMLWriter->outputMemory(TRUE);
     }
 
 }
+?>

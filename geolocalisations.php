@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-include_once './parsing/geolocalisationXmlparser.php';
+include_once 'parsing/geolocalisationXmlparser.php';
 if(isset($_GET["id"])){
     $c = new GeolocalisationXmlparser($_GET["id"]);
 }

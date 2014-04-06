@@ -11,6 +11,7 @@
  * @author Farouk
  */
 include_once("entity/DocumentEntity.php");
+include_once 'connection/connection.php';
 
 class DocumentDao {
 

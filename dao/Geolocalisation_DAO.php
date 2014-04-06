@@ -49,7 +49,6 @@ class GeolocalisationDAO {
     
     function getGeoById($id){
         $result = mysql_query("SELECT * FROM geolocalisation where id = $id");
-        
         $geo =null;
         if ($row = mysql_fetch_array($result)) {
             $geo = new GeolocalisationEntity();
