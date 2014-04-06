@@ -39,7 +39,5 @@ class lieu_xmlparser{
     }
 
 }
-$test=new lieu_xmlparser();
-
 
 ?>
