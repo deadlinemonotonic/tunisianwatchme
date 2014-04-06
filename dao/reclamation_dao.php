@@ -4,6 +4,7 @@ include_once("connection/connection.php");
 include_once("entity/ReclamationEntity.php");
 include_once("dao/utilisateur_dao.php");
 include_once("dao/domaine_dao.php");
+include_once("dao/document_dao.php");
 include_once("dao/Geolocalisation_DAO.php");
 include_once("dao/lieu_dao.php");
 
@@ -21,6 +22,7 @@ class reclamationDao {
         $d = new domaine_dao();
         $l = new LieuDao();
         $g = new GeolocalisationDAO();
+        $documentDao = new DocumentDao();
         while ($result_array = mysql_fetch_array($query_exec)) {
             $reclamation = new ReclamationEntity();
             $reclamation->setId($result_array["id"]);
@@ -29,6 +31,7 @@ class reclamationDao {
             $reclamation->setEtat($result_array["etat"]);
             $reclamation->setDate($result_array["date"]);
             $reclamation->setHeure($result_array["heure"]);
+            $reclamation->setDocuments($documentDao->getDocumentByIdReclamation($result_array["id"]));
             if ($result_array["idcitoyen"] != "")
                 $reclamation->setCitoyen($u->getUserById($result_array["idcitoyen"]));
             if ($result_array["idgeolocalisation"] != "") {

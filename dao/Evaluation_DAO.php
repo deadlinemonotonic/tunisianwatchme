@@ -18,15 +18,13 @@ class EvaluationDao {
     function Insert($note, $idreclamation, $idcitoyen) {
         //$Evaluation = new EvaluationEntity();
         $req = "INSERT INTO evaluation ( note,idreclamation,idcitoyen ) VALUES (" . $note . "," . $idreclamation . "," . $idcitoyen . ")";
-        mysql_query($req) or die("********** Erreur d'ajoute **********<br>");
-        echo "********** Ajout avec succés **********<br>";
+        mysql_query($req) or die("********** Erreur d'ajout **********<br>");
     }
 
     function Delete($Evaluation) {
         //$Evaluation = new EvaluationEntity();
         $req = "DELETE FROM evaluation WHERE idreclamation =  " . $Evaluation->getreclamation() . " and idcitoyen = " . $Evaluation->getcitoyen();
-        mysql_query($req) or die("********** Erreur de suprission **********<br>");
-        echo "********** Supprission avec succés **********<br>";
+        mysql_query($req) or die("********** Erreur de supression **********<br>");
     }
 
     function upDate($id, $Evaluation) {
@@ -54,4 +52,5 @@ class EvaluationDao {
     }
 
 }
+
 ?>

@@ -38,5 +38,4 @@ class domaine_xmlparser {
     }
 
 }
-$p=new domaine_xmlparser();
 ?>

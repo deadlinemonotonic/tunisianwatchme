@@ -15,11 +15,11 @@ include_once("entity/DocumentEntity.php");
 class DocumentDao {
 
     function getDocumentByIdReclamation($idRec) {
-        $sql = "select * from document where id = " . $idRec;
+        $sql = "select * from document where idreclamation = " . $idRec;
         $result = mysql_query($sql) or die(mysql_error());
         $list = array();
 
-        if ($result_array = mysql_fetch_array($result)) {
+        while($result_array = mysql_fetch_array($result)) {
 
             $document = new DocumentEntity();
             $document->setIdreclamation($result_array["idreclamation"]);

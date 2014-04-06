@@ -1,5 +1,5 @@
 <?php
-
+include_once 'DocumentEntity.php';
 class ReclamationEntity {
 
     private $id;
@@ -12,11 +12,20 @@ class ReclamationEntity {
     private $etat;
     private $geolocalisation;
     private $lieu;
+    private $documents;
 
     function __construct() {
-        
+        $documents =  array();
     }
 
+    public function getDocuments() {
+        return $this->documents;
+    }
+
+    public function setDocuments($documents) {
+        $this->documents = $documents;
+    }
+    
     public function getId() {
         return $this->id;
     }
@@ -91,6 +100,10 @@ class ReclamationEntity {
 
     public function setGeolocalisation(GeolocalisationEntity $geolocalisation) {
         $this->geolocalisation = $geolocalisation;
+    }
+    
+    public function addDocument(DocumentEntity $document){
+        $this->documents[] = $document;
     }
 
     public function setlieu(LieuEntity $lieu) {
