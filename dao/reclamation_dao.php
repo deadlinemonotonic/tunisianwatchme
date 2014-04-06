@@ -1,11 +1,11 @@
 <?php
 
-include_once("../connection/connection.php");
-include_once("../entity/ReclamationEntity.php");
-include_once("../dao/utilisateur_dao.php");
-include_once("../dao/domaine_dao.php");
-include_once("../dao/Geolocalisation_DAO.php");
-include_once("../dao/lieu_dao.php");
+include_once("connection/connection.php");
+include_once("entity/ReclamationEntity.php");
+include_once("dao/utilisateur_dao.php");
+include_once("dao/domaine_dao.php");
+include_once("dao/Geolocalisation_DAO.php");
+include_once("dao/lieu_dao.php");
 
 class reclamationDao {
 

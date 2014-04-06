@@ -1,7 +1,7 @@
 <?php
 
-include_once '../dao/reclamation_dao.php';
-include_once '../connection/connection.php';
+include_once 'dao/reclamation_dao.php';
+include_once 'connection/connection.php';
 
 class ReclamationXMLParser {
 

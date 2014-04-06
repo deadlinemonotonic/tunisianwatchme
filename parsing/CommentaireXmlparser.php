@@ -6,9 +6,9 @@
  * and open the template in the editor.
  */
 
-include_once '../connection/connection.php';
-include_once '../dao/commentaire_dao.php';
-include_once '../entity/CommentaireEntity.php';
+include_once 'connection/connection.php';
+include_once 'dao/commentaire_dao.php';
+include_once 'entity/CommentaireEntity.php';
 
 class CommentaireXmlparser {
 

@@ -1,6 +1,6 @@
 <?php
-include_once '../entity/UtilisateurEntity.php';
-include_once '../entity/ReclamationEntity.php';
+include_once 'entity/UtilisateurEntity.php';
+include_once 'entity/ReclamationEntity.php';
 
 
 class CommentaireEntity{

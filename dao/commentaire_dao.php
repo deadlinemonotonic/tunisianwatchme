@@ -1,9 +1,9 @@
 <?php
 
-include_once '../connection/connection.php';
-include_once '../entity/CommentaireEntity.php';
-include_once '../dao/utilisateur_dao.php';
-include_once '../dao/reclamation_dao.php';
+include_once 'connection/connection.php';
+include_once 'entity/CommentaireEntity.php';
+include_once 'dao/utilisateur_dao.php';
+include_once 'dao/reclamation_dao.php';
 
 class commentaire_dao {
 
