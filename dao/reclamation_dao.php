@@ -36,8 +36,12 @@ class reclamationDao {
             if ($result_array["idgeolocalisation"] != "") {
                 $reclamation->setGeolocalisation($result_array["idgeolocalisation"]);
             }
-            $reclamation->setlieu($l->getLieuById($result_array["idlieu"]));
-            $reclamation->setdomaine($d->getDomaineById($result_array["iddomaine"]));
+            if ($result_array["idcitoyen"] != "")
+                $reclamation->setCitoyen($u->getUserById($result_array["idcitoyen"]));
+            if ($result_array["idlieu"] != "")
+                $reclamation->setlieu($l->getLieuById($result_array["idlieu"]));
+            if ($result_array["iddomaine"] != "")
+                $reclamation->setdomaine($d->getDomaineById($result_array["iddomaine"]));
             $list[] = $reclamation;
         }
         return $list;
@@ -65,8 +69,10 @@ class reclamationDao {
             }
             if ($result_array["idcitoyen"] != "")
                 $reclamation->setCitoyen($u->getUserById($result_array["idcitoyen"]));
-            $reclamation->setlieu($l->getLieuById($result_array["idlieu"]));
-            $reclamation->setdomaine($d->getDomaineById($result_array["iddomaine"]));
+            if ($result_array["idlieu"] != "")
+                $reclamation->setlieu($l->getLieuById($result_array["idlieu"]));
+            if ($result_array["iddomaine"] != "")
+                $reclamation->setdomaine($d->getDomaineById($result_array["iddomaine"]));
         }
         return $reclamation;
     }
