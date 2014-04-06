@@ -4,15 +4,6 @@
  */
 package com.tunisianwatchme.Handler;
 
-import org.kxml2.io.*;
-import org.xmlpull.v1.*;
-
-import javax.microedition.midlet.*;
-import javax.microedition.lcdui.*;
-import javax.microedition.io.*;
-
-import java.io.*;
-import java.util.Vector;
 /**
  *
  * @author Farouk
