@@ -33,31 +33,29 @@ class GeolocalisationDAO {
         echo "********** Mise à jour avec succés **********<br>";
     }
 
-    function AfficheAllGeo() {
+    function getGeoByIdReclamation($idreclamation) {
 
-        $result = mysql_query("SELECT * FROM geolocalisation");
+        $result = mysql_query("SELECT * FROM geolocalisation where idreclamation=".$idreclamation);
         $list = array();
-
-        while ($row = mysql_fetch_array($result)) {
+        $geo = null;
+        if ($row = mysql_fetch_array($result)) {
             $geo = new GeolocalisationEntity();
             $geo->setId($row['id']);
             $geo->setLat($row['lat']);
             $geo->setLon($row['lon']);
-            $list[] = $geo;
         }
-        return $list;
+        return $geo;
     }
     
     function getGeoById($id){
         $result = mysql_query("SELECT * FROM geolocalisation where id = $id");
         
-        $geo = new GeolocalisationEntity();
+        $geo =null;
         if ($row = mysql_fetch_array($result)) {
-            
+            $geo = new GeolocalisationEntity();
             $geo->setId($row['id']);
             $geo->setLat($row['lat']);
             $geo->setLon($row['lon']);
-            $list[] = $geo;
         }
         return $geo;
     }
