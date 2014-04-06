@@ -16,35 +16,41 @@ if (isset($_GET["type"])) {
             $reclamation->setEtat($_GET["etat"]);
             $reclamation->setDate($_GET["date"]);
             $reclamation->setHeure($_GET["heure"]);
+            $daoGeo = new GeolocalisationDAO();
+            $geolocalisation = null;
             if (isset($_GET["lon"]) && isset($_GET["lat"])) {
                 $geolocalisation = new GeolocalisationEntity();
                 $geolocalisation->setLat($_GET["lat"]);
                 $geolocalisation->setLon($_GET["lon"]);
                 $reclamation->setGeolocalisation($geolocalisation);
-                $daoGeo = new GeolocalisationDAO();
                 $idgeo = $daoGeo->Insert($geolocalisation);
-                $reclamation->setGeolocalisation($idgeo);
+                $geolocalisation->setId($idgeo);
+                $reclamation->setGeolocalisation($geolocalisation);
             }
             $citoyen = new UtilisateurEntity();
             $citoyen->setId($_GET["idcitoyen"]);
-            
+
             $lieu = new LieuEntity();
             $lieu->setId($_GET["idlieu"]);
-            
+
             $domaine = new DomaineEntity();
             $domaine->setId($_GET["iddomaine"]);
-            
+
             $reclamation->setCitoyen($citoyen);
             $reclamation->setlieu($lieu);
             $reclamation->setdomaine($domaine);
             $daoReclamation = new reclamationDao();
-            $daoReclamation->insertReclamation($reclamation);
+            $idreclamation = $daoReclamation->insertReclamation($reclamation);
+            if (isset($_GET["lon"]) && isset($_GET["lat"])) {
+                $geolocalisation->setIdreclamation($idreclamation);
+                $daoGeo->update($geolocalisation);
+            }
         }
-    } else if($_GET["type"] == "delete"){
-         if(isset($_GET['id'])) {
-             $daoReclamation = new reclamationDao();
-             $daoReclamation->deleteReclamation($_GET['id']);
-         }
+    } else if ($_GET["type"] == "delete") {
+        if (isset($_GET['id'])) {
+            $daoReclamation = new reclamationDao();
+            $daoReclamation->deleteReclamation($_GET['id']);
+        }
     }
 }
 ?>

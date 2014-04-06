@@ -29,7 +29,8 @@ class reclamationDao {
             $reclamation->setEtat($result_array["etat"]);
             $reclamation->setDate($result_array["date"]);
             $reclamation->setHeure($result_array["heure"]);
-            $reclamation->setCitoyen($u->getUserById($result_array["idcitoyen"]));
+            if ($result_array["idcitoyen"] != "")
+                $reclamation->setCitoyen($u->getUserById($result_array["idcitoyen"]));
             if ($result_array["idgeolocalisation"] != "") {
                 $reclamation->setGeolocalisation($g->getGeoById($result_array["idgeolocalisation"]));
             }
@@ -41,7 +42,7 @@ class reclamationDao {
     }
 
     function getReclamationById($id) {
-        $sql = "select * from reclamation where id = ".$id;
+        $sql = "select * from reclamation where id = " . $id;
         $result = mysql_query($sql) or die(mysql_error());
         $u = new utilisateurDao();
         $d = new domaine_dao();
@@ -82,16 +83,15 @@ class reclamationDao {
         $dom = $rec->getdomaine()->getId();
         if ($rec->getGeolocalisation() != "") {
             $geo = $rec->getGeolocalisation()->getId();
-        }
-        else{
+        } else {
             $geo = 'null';
         }
         $lieu = $rec->getlieu()->getId();
 
 
         $req = "INSERT INTO `reclamation` (`date`, `heure`, `description`, `titre`, `idcitoyen`, `iddomaine`, `etat`, `idgeolocalisation`, `idlieu`) VALUES ('$date', '$heure', '$desc', '$titre', '$cit', $dom, '$etat', $geo, $lieu)";
-        $id = mysql_query($req) or die(mysql_error());
-        return $id;
+        mysql_query($req) or die(mysql_error());
+        return mysql_insert_id();
     }
 
     function updateReclamation($id, ReclamationEntity $rec) {
@@ -130,6 +130,7 @@ class reclamationDao {
     }
 
 }
+
 /* $rec = new reclamationDao();
   echo "<br>";
   $rec1 = new ReclamationEntity();
