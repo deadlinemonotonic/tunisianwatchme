@@ -7,4 +7,6 @@
  */
 
 include_once './parsing/geolocalisationXmlparser.php';
-$c = new GeolocalisationXmlparser(1);
+if(isset($_GET["id"])){
+    $c = new GeolocalisationXmlparser($_GET["id"]);
+}
