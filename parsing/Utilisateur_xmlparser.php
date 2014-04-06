@@ -72,5 +72,4 @@ class UtilisateurXMLParser {
     }
 
 }
-$p = new UtilisateurXMLParser(2);
 ?>
