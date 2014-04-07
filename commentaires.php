@@ -8,11 +8,7 @@
 
 include_once 'parsing/commentaire_xmlparser.php';
 if (isset($_GET["type"])) {
-    if ($_GET["type"] == "select") {
-        if (isset($_GET["id"])) {
-            $xml = new CommentaireXMLParser($_GET["id"]);
-        }
-    } else if ($_GET["type"] == "add") {
+    if ($_GET["type"] == "add") {
         if (isset($_GET['texte']) && isset($_GET['idutilisateur']) && isset($_GET['idreclamation']) && isset($_GET['date'])) {
 
             $commentaire = new CommentaireEntity();

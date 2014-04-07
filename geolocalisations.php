@@ -8,12 +8,8 @@
 
 include_once 'parsing/geolocalisationXmlparser.php';
 if (isset($_GET["type"])) {
-    if ($_GET["type"] == "select") {
-        if (isset($_GET["id"])) {
-            $c = new GeolocalisationXmlparser($_GET["id"]);
-        }
-    }
-    else if($_GET["type"]=="add"){
+    
+    if($_GET["type"]=="add"){
         if(isset($_GET["lon"]) && isset($_GET["lat"])){
             $geolocalisation = new GeolocalisationEntity();
             $geolocalisation->setLat($_GET["lat"]);
