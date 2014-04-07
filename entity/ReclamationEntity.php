@@ -12,10 +12,22 @@ class ReclamationEntity {
     private $citoyen;
     private $domaine;
     private $etat;
-    private $idgeolocalisation;
+    private $geolocalisation;
     private $lieu;
+    private $commentaires;
 
+    public function getCommentaires() {
+        return $this->commentaires;
+    }
+
+    public function setCommentaires($commentaires) {
+        $this->commentaires = $commentaires;
+    }
+
+    
+        
     function __construct() {
+        $commentaires = array();
     }
 
     public function getId() {
@@ -51,11 +63,11 @@ class ReclamationEntity {
     }
 
     public function getGeolocalisation() {
-        return $this->idgeolocalisation;
+        return $this->geolocalisation;
     }
-    
-    public function setGeolocalisation($idgeolocalisation) {
-        $this->idgeolocalisation=$idgeolocalisation;
+
+    public function setGeolocalisation(GeolocalisationEntity $geolocalisation) {
+        $this->geolocalisation = $geolocalisation;
     }
 
     public function getlieu() {

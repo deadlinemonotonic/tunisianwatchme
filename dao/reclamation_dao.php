@@ -7,6 +7,7 @@ include_once("dao/domaine_dao.php");
 include_once("dao/document_dao.php");
 include_once("dao/Geolocalisation_DAO.php");
 include_once("dao/lieu_dao.php");
+include_once("dao/commentaire_dao.php");
 include_once("dao/Evaluation_DAO.php");
 
 class reclamationDao {
@@ -22,7 +23,9 @@ class reclamationDao {
         $u = new utilisateurDao();
         $l = new LieuDao();
         $d = new domaine_dao();
+        $g = new GeolocalisationDAO();
         $documentDao = new DocumentDao();
+        $commentaireDao = new commentaire_dao();
         while ($result_array = mysql_fetch_array($query_exec)) {
             $reclamation = new ReclamationEntity();
             $reclamation->setId($result_array["id"]);
@@ -31,10 +34,11 @@ class reclamationDao {
             $reclamation->setEtat($result_array["etat"]);
             $reclamation->setDate($result_array["date"]);
             $reclamation->setHeure($result_array["heure"]);
+            $reclamation->setCommentaires($commentaireDao->getByidReclamation($result_array["id"]));
             if ($result_array["idcitoyen"] != "")
                 $reclamation->setCitoyen($u->getUserById($result_array["idcitoyen"]));
             if ($result_array["idgeolocalisation"] != "") {
-                $reclamation->setGeolocalisation($result_array["idgeolocalisation"]);
+                $reclamation->setGeolocalisation($g->getGeoById($result_array["idgeolocalisation"]));
             }
             if ($result_array["idcitoyen"] != "")
                 $reclamation->setCitoyen($u->getUserById($result_array["idcitoyen"]));
@@ -65,7 +69,7 @@ class reclamationDao {
             $reclamation->setDate($result_array["date"]);
             $reclamation->setHeure($result_array["heure"]);
             if ($result_array["idgeolocalisation"] != "") {
-                $reclamation->setGeolocalisation($result_array["idgeolocalisation"]);
+                $reclamation->setGeolocalisation($g->getGeoById($result_array["idgeolocalisation"]));
             }
             if ($result_array["idcitoyen"] != "")
                 $reclamation->setCitoyen($u->getUserById($result_array["idcitoyen"]));
