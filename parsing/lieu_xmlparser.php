@@ -8,8 +8,8 @@ class lieu_xmlparser{
     function __construct($id) {
         
         $dao = new LieuDao();
-        if(isset($id)){
-            $list = $dao->getLieuById($id);
+        if($id!=0){
+            $list[] = $dao->getLieuById($id);
         }else{
             $list = $dao->getAll();
         }
