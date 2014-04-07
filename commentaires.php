@@ -14,6 +14,7 @@ if (isset($_GET["type"])) {
         }
     } else if ($_GET["type"] == "add") {
         if (isset($_GET['texte']) && isset($_GET['idutilisateur']) && isset($_GET['idreclamation']) && isset($_GET['date'])) {
+
             $commentaire = new CommentaireEntity();
 
             $commentaire->setTexte($_GET["texte"]);

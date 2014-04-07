@@ -14,8 +14,10 @@ class commentaire_dao {
 
     public function Insert(CommentaireEntity $com) {
         //$com = new CommentaireEntity();
+
+            
         $req = "INSERT INTO commentaire ( idreclamation , texte , idutilisateur , date )"
-                . " VALUES (" . $com->getReclamation() . "," . $com->getTexte() . "," . $com->getUser() . "," . $com->getDate() . ")";
+                . " VALUES (" . $com->getReclamation() . ",'" . $com->getTexte() . "'," . $com->getUser() . "," . $com->getDate() .")";
         mysql_query($req) or
                 die("<br>*********** Erreur d'ajout ***********<br>");
         echo "<br>********** Ajout avec succés **********<br>";
