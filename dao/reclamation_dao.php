@@ -8,6 +8,7 @@ include_once("dao/document_dao.php");
 include_once("dao/Geolocalisation_DAO.php");
 include_once("dao/lieu_dao.php");
 include_once("dao/Evaluation_DAO.php");
+
 class reclamationDao {
 
     function __construct() {
@@ -19,9 +20,8 @@ class reclamationDao {
         $query_exec = mysql_query($query_search) or die(mysql_error());
         $list = array();
         $u = new utilisateurDao();
-        $d = new domaine_dao();
         $l = new LieuDao();
-        $g = new GeolocalisationDAO();
+        $d = new domaine_dao();
         $documentDao = new DocumentDao();
         while ($result_array = mysql_fetch_array($query_exec)) {
             $reclamation = new ReclamationEntity();
@@ -31,14 +31,17 @@ class reclamationDao {
             $reclamation->setEtat($result_array["etat"]);
             $reclamation->setDate($result_array["date"]);
             $reclamation->setHeure($result_array["heure"]);
-            $reclamation->setDocuments($documentDao->getDocumentByIdReclamation($result_array["id"]));
             if ($result_array["idcitoyen"] != "")
                 $reclamation->setCitoyen($u->getUserById($result_array["idcitoyen"]));
             if ($result_array["idgeolocalisation"] != "") {
-                $reclamation->setGeolocalisation($g->getGeoById($result_array["idgeolocalisation"]));
+                $reclamation->setGeolocalisation($result_array["idgeolocalisation"]);
             }
-            $reclamation->setlieu($l->getLieuById($result_array["idlieu"]));
-            $reclamation->setdomaine($d->getDomaineById($result_array["iddomaine"]));
+            if ($result_array["idcitoyen"] != "")
+                $reclamation->setCitoyen($u->getUserById($result_array["idcitoyen"]));
+            if ($result_array["idlieu"] != "")
+                $reclamation->setlieu($l->getLieuById($result_array["idlieu"]));
+            if ($result_array["iddomaine"] != "")
+                $reclamation->setdomaine($d->getDomaineById($result_array["iddomaine"]));
             $list[] = $reclamation;
         }
         return $list;
@@ -62,13 +65,14 @@ class reclamationDao {
             $reclamation->setDate($result_array["date"]);
             $reclamation->setHeure($result_array["heure"]);
             if ($result_array["idgeolocalisation"] != "") {
-                $reclamation->setGeolocalisation($g->getGeoById($result_array["idgeolocalisation"]));
+                $reclamation->setGeolocalisation($result_array["idgeolocalisation"]);
             }
-            
-            $reclamation->setEvaluations($e->getEvaluationsByReclamation($result_array["id"]));
-            $reclamation->setCitoyen($u->getUserById($result_array["idcitoyen"]));
-            $reclamation->setlieu($l->getLieuById($result_array["idlieu"]));
-            $reclamation->setdomaine($d->getDomaineById($result_array["iddomaine"]));
+            if ($result_array["idcitoyen"] != "")
+                $reclamation->setCitoyen($u->getUserById($result_array["idcitoyen"]));
+            if ($result_array["idlieu"] != "")
+                $reclamation->setlieu($l->getLieuById($result_array["idlieu"]));
+            if ($result_array["iddomaine"] != "")
+                $reclamation->setdomaine($d->getDomaineById($result_array["iddomaine"]));
         }
         return $reclamation;
     }

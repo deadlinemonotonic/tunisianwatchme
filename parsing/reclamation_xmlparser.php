@@ -20,6 +20,7 @@ class ReclamationXMLParser {
         $oXMLWriter = new XMLWriter;
         $oXMLWriter->openMemory();
         $oXMLWriter->startDocument('1.0', 'UTF-8');
+  
         
         $oXMLWriter->startElement('reclamations');
             foreach($listReclamations as $recalamtion){
@@ -49,36 +50,13 @@ class ReclamationXMLParser {
                         $oXMLWriter->text($recalamtion->getEtat());
                    $oXMLWriter->endElement();
                    
-                   $oXMLWriter->startElement('geolocalisation');
-                    if($recalamtion->getGeolocalisation()!=""){
-                         $oXMLWriter->startElement('lon');
-                                $oXMLWriter->text($recalamtion->getGeolocalisation()->getLon());
-                         $oXMLWriter->endElement();
-                         $oXMLWriter->startElement('lat');
-                                $oXMLWriter->text($recalamtion->getGeolocalisation()->getLat());
-                         $oXMLWriter->endElement();
-                    }
-                    $listDocument = $recalamtion->getDocuments();
-                    $oXMLWriter->startElement('documents');
-                    foreach($listDocument as $document){
-                         $oXMLWriter->startElement('document');
-                            $oXMLWriter->startElement('id');
-                                $oXMLWriter->text($document->getId());
-                            $oXMLWriter->endElement();
-                            $oXMLWriter->startElement('nom');
-                                $oXMLWriter->text($document->getNom());
-                            $oXMLWriter->endElement();
-                            $oXMLWriter->startElement('content');
-                                $oXMLWriter->text(base64_encode($document->getContent()));
-                            $oXMLWriter->endElement();
-                         $oXMLWriter->endElement();
-                    }
+                   $oXMLWriter->startElement('idgeolocalisation');
+                    $oXMLWriter->text($recalamtion->getGeolocalisation());
                    $oXMLWriter->endElement();
-                   $oXMLWriter->endElement();
-                   $oXMLWriter->startElement('lieu');
-                         $oXMLWriter->startElement('ville');
-                                 $oXMLWriter->text($recalamtion->getlieu());
-                         $oXMLWriter->endElement();
+
+
+                   $oXMLWriter->startElement('ville');
+                        $oXMLWriter->text($recalamtion->getlieu());
                    $oXMLWriter->endElement();
             $oXMLWriter->endElement();
             }

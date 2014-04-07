@@ -6,5 +6,5 @@
  */
 
 include_once 'parsing/domaine_xmlparser.php';
-$xml = new domaine_xmlparser();
+$xml = new domaine_xmlparser(0);
 ?>

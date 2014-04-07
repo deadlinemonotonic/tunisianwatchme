@@ -12,30 +12,10 @@ class ReclamationEntity {
     private $citoyen;
     private $domaine;
     private $etat;
-    private $geolocalisation;
+    private $idgeolocalisation;
     private $lieu;
-    private $documents;
-    private $evaluations;
 
     function __construct() {
-        $documents = array();
-        $evaluations = array();
-    }
-
-    public function getEvaluations() {
-        return $this->evaluations;
-    }
-
-    public function setEvaluations($evaluations) {
-        $this->evaluations = $evaluations;
-    }
-
-    public function getDocuments() {
-        return $this->documents;
-    }
-
-    public function setDocuments($documents) {
-        $this->documents = $documents;
     }
 
     public function getId() {
@@ -71,7 +51,11 @@ class ReclamationEntity {
     }
 
     public function getGeolocalisation() {
-        return $this->geolocalisation;
+        return $this->idgeolocalisation;
+    }
+    
+    public function setGeolocalisation($idgeolocalisation) {
+        $this->idgeolocalisation=$idgeolocalisation;
     }
 
     public function getlieu() {
@@ -110,8 +94,8 @@ class ReclamationEntity {
         $this->etat = $etat;
     }
 
-    public function setGeolocalisation(GeolocalisationEntity $geolocalisation) {
-        $this->geolocalisation = $geolocalisation;
+    public function setidGeolocalisation($geolocalisation) {
+        $this->idgeolocalisation = $geolocalisation;
     }
 
     public function addDocument(DocumentEntity $document) {
