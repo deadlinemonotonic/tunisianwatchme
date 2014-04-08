@@ -27,7 +27,7 @@ class GeolocalisationDAO {
 
     function update(GeolocalisationEntity $geo) {
         //$geo = new GeolocalisationEntity();
-        $req = "UPDATE geolocalisation SET lon ='" . $geo->getLon() . "', lat ='" . $geo->getLon() . "', idreclamation='". $geo->getIdreclamation() ."' WHERE id ='" . $geo->getId() . "'";
+        $req = "UPDATE geolocalisation SET lon ='" . $geo->getLon() . "', lat ='" . $geo->getLat() . "', idreclamation='". $geo->getIdreclamation() ."' WHERE id ='" . $geo->getId() . "'";
         echo $req;
         mysql_query($req) or die("********** Erreur de mise à jour **********<br>");
         echo "********** Mise à jour avec succés **********<br>";
