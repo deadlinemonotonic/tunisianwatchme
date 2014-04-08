@@ -6,7 +6,6 @@
  * and open the template in the editor.
  */
 
-include_once 'parsing/commentaire_xmlparser.php';
 if (isset($_GET["type"])) {
     if ($_GET["type"] == "add") {
         if (isset($_GET['texte']) && isset($_GET['idutilisateur']) && isset($_GET['idreclamation']) && isset($_GET['date'])) {

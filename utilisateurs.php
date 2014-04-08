@@ -75,7 +75,7 @@ if (isset($_GET["type"])) {
                 $utilisateur->setDatenaissance(null);
 
             $daoUtilisateur = new utilisateurDao();
-            $daoUtilisateur->updateUserUser($id,$utilisateur);
+            $daoUtilisateur->updateUserUser($_GET['id'],$utilisateur);
         }
     }
 }

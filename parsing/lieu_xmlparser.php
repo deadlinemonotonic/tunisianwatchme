@@ -5,15 +5,10 @@ include_once 'dao/lieu_dao.php';
 
 class lieu_xmlparser{
 
-    function __construct($id) {
+    function __construct() {
         
         $dao = new LieuDao();
-        if($id!=0){
-            $list[] = $dao->getLieuById($id);
-        }else{
-            $list = $dao->getAll();
-        }
-
+        $list = $dao->getAll();
         $this->setXML($list);
     }
 
