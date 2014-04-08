@@ -35,7 +35,6 @@ class utilisateurDao {
     }
 
     function updateUser($id, UtilisateurEntity $user) {
-        $etablissement = $etablissement->getEtablissement();
         $nom = $user->getNom();
         $prenom = $user->getPrenom();
         $sexe = $user->getSexe();
@@ -45,7 +44,7 @@ class utilisateurDao {
         $mail = $user->getMail();
         $type = $user->getType();
         $datenaissance = $user->getDatenaissance();
-        $requete = "UPDATE `utilisateur` SET `idetablissement` = '$etablissement', `nom` = '$nom', `prenom` = '$prenom', `sexe` = '$sexe',`adress` = '$adress',`login` = '$login',`mdp` = '$mdp',`mail` = '$mail',`type` = '$type',`datenaissance` = '$datenaissance' WHERE `id` ='$id';";
+        $requete = "UPDATE `utilisateur` SET `nom` = '$nom', `prenom` = '$prenom', `sexe` = '$sexe',`adress` = '$adress',`login` = '$login',`mdp` = '$mdp',`mail` = '$mail',`type` = '$type',`datenaissance` = '$datenaissance' WHERE `id` ='$id';";
 
         if (mysql_query($requete)) {
             echo "Update réussie";

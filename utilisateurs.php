@@ -50,10 +50,11 @@ if (isset($_GET["type"])) {
             $daoUtilisateur = new utilisateurDao();
             $daoUtilisateur->deleteUser($_GET['id']);
         }
-    }else if ($_GET["type"] == "update"&&isset ($_GET['id'])) {
-        if (isset($_GET['nom']) && isset($_GET['prenom']) && isset($_GET['sexe']) && isset($_GET['login']) && isset($_GET['mdp']) && isset($_GET['mail'])) {
+    }else if ($_GET["type"] == "update" ) {
+                    echo "test1" ;
+        if (isset ($_GET['id']) &&  isset($_GET['nom']) && isset($_GET['prenom']) && isset($_GET['sexe']) && isset($_GET['login']) && isset($_GET['mdp']) && isset($_GET['mail'])) {
             $utilisateur = new UtilisateurEntity();
-
+            echo "test2" ;
             $utilisateur->setNom($_GET["nom"]);
             $utilisateur->setPrenom($_GET["prenom"]);
             $utilisateur->setSexe($_GET["sexe"]);
@@ -75,7 +76,7 @@ if (isset($_GET["type"])) {
                 $utilisateur->setDatenaissance(null);
 
             $daoUtilisateur = new utilisateurDao();
-            $daoUtilisateur->updateUserUser($_GET['id'],$utilisateur);
+            $daoUtilisateur->updateUser($_GET['id'],$utilisateur);
         }
     }
 }
