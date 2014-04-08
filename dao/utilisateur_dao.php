@@ -109,6 +109,27 @@ class utilisateurDao {
         }
         return $user;
     }
+    
+    function Login($login,$pass) {
+        $query_search = "SELECT * FROM utilisateur WHERE login ='".$login."' and mdp ='".$pass."' and type = 'C'";
+        $query_exec = mysql_query($query_search) or die(mysql_error());
+
+        $user = "";
+        if ($result_array = mysql_fetch_array($query_exec)) {
+            $user = new UtilisateurEntity();
+            $user->setId($result_array["id"]);
+            $user->setNom($result_array["nom"]);
+            $user->setPrenom($result_array["prenom"]);
+            $user->setSexe($result_array["sexe"]);
+            $user->setAdress($result_array["adress"]);
+            $user->setLogin($result_array["login"]);
+            $user->setMdp($result_array["mdp"]);
+            $user->setMail($result_array["mail"]);
+            $user->setType($result_array["type"]);
+            $user->setDatenaissance($result_array["datenaissance"]);
+        }
+        return $user;
+    }
 
 }
 
