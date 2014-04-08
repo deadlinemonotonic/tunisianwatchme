@@ -6,6 +6,11 @@
  * and open the template in the editor.
  */
 
+
+/**
+ * @author MarwenSdiri <marwen.sdiri@esprit.tn>
+ */
+
 include_once 'parsing/commentaire_xmlparser.php';
 if (isset($_GET["type"])) {
     if ($_GET["type"] == "add") {
