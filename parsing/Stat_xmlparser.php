@@ -13,8 +13,8 @@ class StatxmlParser {
             $list = $statDao->getStatByDomaine();
         } elseif ($type == 'e') {
             $list = $statDao->getStatByEtat();
-            $this->setXML($list);
         }
+         $this->setXML($list);
     }
 
     function setXML($list) {
@@ -23,13 +23,15 @@ class StatxmlParser {
         $oXMLWriter->openMemory();
         $oXMLWriter->startDocument('1.0', 'UTF-8');
 
-        $oXMLWriter->startElement('criteres');
+        $oXMLWriter->startElement('datas');
         foreach ($list as $value) {
+             $oXMLWriter->startElement('data');
             $oXMLWriter->startElement('critere');
             $oXMLWriter->text($value->getCritere());
             $oXMLWriter->endElement();
             $oXMLWriter->startElement('value');
             $oXMLWriter->text($value->getValeur());
+            $oXMLWriter->endElement();
             $oXMLWriter->endElement();
         }
         $oXMLWriter->endElement();
