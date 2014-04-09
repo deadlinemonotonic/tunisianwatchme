@@ -45,9 +45,5 @@ class GeolocalisationEntity{
      //public function __toString() {
         // return 'id:'.$this->id.' lat:'.$this->lat.' lon:'.$this->lon;
    //  }
-     
-    
-
-
 }
 ?>

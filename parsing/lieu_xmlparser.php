@@ -6,6 +6,7 @@ include_once 'dao/lieu_dao.php';
 class lieu_xmlparser{
 
     function __construct() {
+        
         $dao = new LieuDao();
         $list = $dao->getAll();
         $this->setXML($list);
@@ -13,7 +14,7 @@ class lieu_xmlparser{
 
     function setXML($listLieux) {
        header('Content-type: text/xml; charset=UTF-8');
-        $lieu = new LieuEntity();
+        //$lieu = new LieuEntity();
         $oXMLWriter = new XMLWriter();
         $oXMLWriter->openMemory();
         $oXMLWriter->startDocument('1.0', 'UTF-8');
@@ -39,7 +40,4 @@ class lieu_xmlparser{
     }
 
 }
-$test=new lieu_xmlparser();
-
-
 ?>

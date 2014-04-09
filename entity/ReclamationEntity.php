@@ -14,28 +14,20 @@ class ReclamationEntity {
     private $etat;
     private $geolocalisation;
     private $lieu;
-    private $documents;
-    private $evaluations;
+    private $commentaires;
 
+    public function getCommentaires() {
+        return $this->commentaires;
+    }
+
+    public function setCommentaires($commentaires) {
+        $this->commentaires = $commentaires;
+    }
+
+    
+        
     function __construct() {
-        $documents = array();
-        $evaluations = array();
-    }
-
-    public function getEvaluations() {
-        return $this->evaluations;
-    }
-
-    public function setEvaluations($evaluations) {
-        $this->evaluations = $evaluations;
-    }
-
-    public function getDocuments() {
-        return $this->documents;
-    }
-
-    public function setDocuments($documents) {
-        $this->documents = $documents;
+        $commentaires = array();
     }
 
     public function getId() {
@@ -74,6 +66,10 @@ class ReclamationEntity {
         return $this->geolocalisation;
     }
 
+    public function setGeolocalisation(GeolocalisationEntity $geolocalisation) {
+        $this->geolocalisation = $geolocalisation;
+    }
+
     public function getlieu() {
         return $this->lieu;
     }
@@ -110,8 +106,8 @@ class ReclamationEntity {
         $this->etat = $etat;
     }
 
-    public function setGeolocalisation(GeolocalisationEntity $geolocalisation) {
-        $this->geolocalisation = $geolocalisation;
+    public function setidGeolocalisation($geolocalisation) {
+        $this->idgeolocalisation = $geolocalisation;
     }
 
     public function addDocument(DocumentEntity $document) {

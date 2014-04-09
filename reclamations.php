@@ -11,8 +11,8 @@ if (isset($_GET["type"])) {
     } else if ($_GET["type"] == "add") {
         if (isset($_GET['titre']) && isset($_GET['description']) && isset($_GET['date']) && isset($_GET['heure']) && isset($_GET['idcitoyen']) && isset($_GET['iddomaine']) && isset($_GET['etat']) && isset($_GET['idlieu'])) {
             $reclamation = new ReclamationEntity();
-            $reclamation->setTitre($_GET['titre']);
-            $reclamation->setDescription($_GET["description"]);
+            $reclamation->setTitre(utf8_encode($_GET['titre']));
+            $reclamation->setDescription(utf8_encode($_GET["description"]));
             $reclamation->setEtat($_GET["etat"]);
             $reclamation->setDate($_GET["date"]);
             $reclamation->setHeure($_GET["heure"]);

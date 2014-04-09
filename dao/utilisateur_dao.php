@@ -35,7 +35,6 @@ class utilisateurDao {
     }
 
     function updateUser($id, UtilisateurEntity $user) {
-        $etablissement = $etablissement->getEtablissement();
         $nom = $user->getNom();
         $prenom = $user->getPrenom();
         $sexe = $user->getSexe();
@@ -45,7 +44,7 @@ class utilisateurDao {
         $mail = $user->getMail();
         $type = $user->getType();
         $datenaissance = $user->getDatenaissance();
-        $requete = "UPDATE `utilisateur` SET `idetablissement` = '$etablissement', `nom` = '$nom', `prenom` = '$prenom', `sexe` = '$sexe',`adress` = '$adress',`login` = '$login',`mdp` = '$mdp',`mail` = '$mail',`type` = '$type',`datenaissance` = '$datenaissance' WHERE `id` ='$id';";
+        $requete = "UPDATE `utilisateur` SET `nom` = '$nom', `prenom` = '$prenom', `sexe` = '$sexe',`adress` = '$adress',`login` = '$login',`mdp` = '$mdp',`mail` = '$mail',`type` = '$type',`datenaissance` = '$datenaissance' WHERE `id` ='$id';";
 
         if (mysql_query($requete)) {
             echo "Update réussie";
@@ -98,6 +97,27 @@ class utilisateurDao {
 
             $user->setId($result_array["id"]);
             $user->setEtablissement($result_array["idetablissement"]);
+            $user->setNom($result_array["nom"]);
+            $user->setPrenom($result_array["prenom"]);
+            $user->setSexe($result_array["sexe"]);
+            $user->setAdress($result_array["adress"]);
+            $user->setLogin($result_array["login"]);
+            $user->setMdp($result_array["mdp"]);
+            $user->setMail($result_array["mail"]);
+            $user->setType($result_array["type"]);
+            $user->setDatenaissance($result_array["datenaissance"]);
+        }
+        return $user;
+    }
+    
+    function Login($login,$pass) {
+        $query_search = "SELECT * FROM utilisateur WHERE login ='".$login."' and mdp ='".$pass."' and type = 'C'";
+        $query_exec = mysql_query($query_search) or die(mysql_error());
+
+        $user = "";
+        if ($result_array = mysql_fetch_array($query_exec)) {
+            $user = new UtilisateurEntity();
+            $user->setId($result_array["id"]);
             $user->setNom($result_array["nom"]);
             $user->setPrenom($result_array["prenom"]);
             $user->setSexe($result_array["sexe"]);

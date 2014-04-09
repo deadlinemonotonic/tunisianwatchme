@@ -1,39 +1,29 @@
 <?php
 
-include_once 'dao/utilisateur_dao.php';
-include_once 'connection/connection.php';
+include_once("connection/connection.php");
+include_once("dao/utilisateur_dao.php");
 
-class UtilisateurXMLParser {
+class LoginXMLParser {
 
-    private $id;
 
-    function __construct($id) {
-        $this->id = $id;
+    function __construct($login,$password) {
         $dao = new utilisateurDao();
-        if ($id == 0) {
-            $list = $dao->getAll();
-        } else {
-            $list[] = $dao->getUserById($id);
-        }
-        $this->setXML($list);
+        $user = $dao->Login($login, $password);
+        $this->setXML($user);
     }
 
-    function setXML($listUtilisateurs) {
-        header('Content-type: text/xml; charset=UTF-8');
-        $utilisateur = new UtilisateurEntity();
+    function setXML($utilisateur) {
+       // header('Content-type: text/xml; charset=UTF-8');
         $oXMLWriter = new XMLWriter;
         $oXMLWriter->openMemory();
         $oXMLWriter->startDocument('1.0', 'UTF-8');
-        
-        $oXMLWriter->startElement('utilisateurs');
-            foreach($listUtilisateurs as $utilisateur){
+           
             $oXMLWriter->startElement('utilisateur');
+             if($utilisateur!=""){
                    $oXMLWriter->startElement('id');
                         $oXMLWriter->text($utilisateur->getId());
                    $oXMLWriter->endElement();
-                   $oXMLWriter->startElement('etablissement');
-                        $oXMLWriter->text($utilisateur->getEtablissement());
-                   $oXMLWriter->endElement();
+                 
                    $oXMLWriter->startElement('nom');
                         $oXMLWriter->text($utilisateur->getNom());
                    $oXMLWriter->endElement();
@@ -64,12 +54,13 @@ class UtilisateurXMLParser {
                    $oXMLWriter->startElement('datenaissance');
                         $oXMLWriter->text($utilisateur->getDatenaissance());
                    $oXMLWriter->endElement();
+                   }
             $oXMLWriter->endElement();
-            }
-        $oXMLWriter->endElement();
+            
         $oXMLWriter->endDocument();
         echo $oXMLWriter->outputMemory(TRUE);
     }
 
 }
+
 ?>

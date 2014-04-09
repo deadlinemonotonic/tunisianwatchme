@@ -8,7 +8,7 @@ class CommentaireEntity{
     private $texte;
     private $user;
     private $date;
-    private $Reclamation;
+    private $idReclamation;
 
     
     function __construct() {
@@ -31,7 +31,7 @@ class CommentaireEntity{
     }
 
     public function getReclamation() {
-        return $this->Reclamation;
+        return $this->idReclamation;
     }
 
     public function setId($id) {
@@ -50,8 +50,8 @@ class CommentaireEntity{
         $this->date = $date;
     }
 
-    public function setReclamation($Reclamation) {
-        $this->Reclamation = $Reclamation;
+    public function setReclamation($idReclamation) {
+        $this->idReclamation = $idReclamation;
     }
     
     public function __toString() {

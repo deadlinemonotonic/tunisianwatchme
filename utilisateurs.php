@@ -22,19 +22,19 @@ if (isset($_GET["type"])) {
         if (isset($_GET['nom']) && isset($_GET['prenom']) && isset($_GET['sexe']) && isset($_GET['login']) && isset($_GET['mdp']) && isset($_GET['mail'])) {
             $utilisateur = new UtilisateurEntity();
 
-            $utilisateur->setNom($_GET["nom"]);
-            $utilisateur->setPrenom($_GET["prenom"]);
+            $utilisateur->setNom(utf8_encode($_GET["nom"]));
+            $utilisateur->setPrenom(utf8_encode($_GET["prenom"]));
             $utilisateur->setSexe($_GET["sexe"]);
-            $utilisateur->setLogin($_GET["login"]);
-            $utilisateur->setMdp($_GET["mdp"]);
-            $utilisateur->setMail($_GET["mail"]);
+            $utilisateur->setLogin(utf8_encode($_GET["login"]));
+            $utilisateur->setMdp(utf8_encode($_GET["mdp"]));
+            $utilisateur->setMail(utf8_encode($_GET["mail"]));
             $utilisateur->setType('c');
             if (isset($_GET["photo"]))
                 $utilisateur->setPhoto($_GET["photo"]);
             else
                 $utilisateur->setPhoto(null);
             if (isset($_GET["adress"]))
-                $utilisateur->setAdress($_GET["adress"]);
+                $utilisateur->setAdress(utf8_encode($_GET["adress"]));
             else
                 $utilisateur->setAdress(null);
             if (isset($_GET["datedenaissance"]))
@@ -50,16 +50,16 @@ if (isset($_GET["type"])) {
             $daoUtilisateur = new utilisateurDao();
             $daoUtilisateur->deleteUser($_GET['id']);
         }
-    }else if ($_GET["type"] == "update"&&isset ($_GET['id'])) {
-        if (isset($_GET['nom']) && isset($_GET['prenom']) && isset($_GET['sexe']) && isset($_GET['login']) && isset($_GET['mdp']) && isset($_GET['mail'])) {
+    }else if ($_GET["type"] == "update" ) {
+                    echo "test1" ;
+        if (isset ($_GET['id']) &&  isset($_GET['nom']) && isset($_GET['prenom']) && isset($_GET['sexe']) && isset($_GET['login']) && isset($_GET['mdp']) && isset($_GET['mail'])) {
             $utilisateur = new UtilisateurEntity();
-
-            $utilisateur->setNom($_GET["nom"]);
-            $utilisateur->setPrenom($_GET["prenom"]);
+            $utilisateur->setNom(utf8_encode($_GET["nom"]));
+            $utilisateur->setPrenom(utf8_encode($_GET["prenom"]));
             $utilisateur->setSexe($_GET["sexe"]);
-            $utilisateur->setLogin($_GET["login"]);
-            $utilisateur->setMdp($_GET["mdp"]);
-            $utilisateur->setMail($_GET["mail"]);
+            $utilisateur->setLogin(utf8_encode($_GET["login"]));
+            $utilisateur->setMdp(utf8_encode($_GET["mdp"]));
+            $utilisateur->setMail(utf8_encode($_GET["mail"]));
             $utilisateur->setType('c');
             if (isset($_GET["photo"]))
                 $utilisateur->setPhoto($_GET["photo"]);
@@ -75,7 +75,7 @@ if (isset($_GET["type"])) {
                 $utilisateur->setDatenaissance(null);
 
             $daoUtilisateur = new utilisateurDao();
-            $daoUtilisateur->updateUserUser($id,$utilisateur);
+            $daoUtilisateur->updateUser($_GET['id'],$utilisateur);
         }
     }
 }
